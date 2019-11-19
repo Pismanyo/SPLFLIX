@@ -1,0 +1,3 @@
+/home/joni/CLionProjects/SPLFLIX/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/joni/CLionProjects/SPLFLIX/cmake-build-debug/CMakeFiles/SPLFLIX.dir
+/home/joni/CLionProjects/SPLFLIX/cmake-build-debug/CMakeFiles/edit_cache.dir
