@@ -2,7 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Project" targetName="SPLFLIX" />
+      <config projectName="Assignment1" targetName="SPLFLIX" />
+      <config projectName="Assignment1" targetName="Assignment1" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -13,55 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b6c5e80-42b2-419c-8b97-0c26dfcb8118" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/Main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/bin/hello" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/bin/helloWorld.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/bin/run.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/3.15.3/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/3.15.3/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/3.15.3/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdCXX/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/SPLFLIX.dir/CXX.includecache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/SPLFLIX.dir/DependInfo.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/SPLFLIX.dir/build.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/SPLFLIX.dir/cmake_clean.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/SPLFLIX.dir/depend.internal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/SPLFLIX.dir/depend.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/SPLFLIX.dir/flags.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/SPLFLIX.dir/link.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/SPLFLIX.dir/main.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/SPLFLIX.dir/progress.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/SPLFLIX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/SPLFLIX.cbp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/include/Action.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/include/Session.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/include/User.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/include/Watchable.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/include/json.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/src/Action.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/src/Main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/src/Session.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/src/User.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment1/src/Watchable.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment1/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment1/Main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +25,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -79,7 +33,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment1/CMakeLists.txt" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -101,8 +55,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="SPLFLIX" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="SPLFLIX" EXPLICIT_BUILD_TARGET_NAME="all">
+  <component name="RunManager" selected="CMake Application.SPLFLIX">
+    <configuration name="Assignment1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Assignment1" RUN_TARGET_NAME="Assignment1" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SPLFLIX" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Assignment1" RUN_TARGET_NAME="Assignment1" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -112,6 +71,10 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="CMake Application.SPLFLIX" />
+      <item itemvalue="CMake Application.Assignment1" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -126,6 +89,7 @@
       <workItem from="1574189850556" duration="315000" />
       <workItem from="1574190182197" duration="894000" />
       <workItem from="1574192377995" duration="34000" />
+      <workItem from="1574195283925" duration="326000" />
     </task>
     <servers />
   </component>

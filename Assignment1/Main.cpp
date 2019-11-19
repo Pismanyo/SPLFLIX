@@ -12,5 +12,7 @@ int main(int argc, char** argv){
 //	s.start();
 int x(5);
 cout << x << endl;
+    cout << x << endl;
+
 	return 0;
 }
