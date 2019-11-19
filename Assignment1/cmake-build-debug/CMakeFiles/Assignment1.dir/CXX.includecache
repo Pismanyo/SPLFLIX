@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/joni/CLionProjects/SPLFLIX/Assignment1/Action.h
+string
+-
+iostream
+-
+
+/home/joni/CLionProjects/SPLFLIX/Assignment1/Main.cpp
+iostream
+-
+Session.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/Session.h
+
+/home/joni/CLionProjects/SPLFLIX/Assignment1/Session.h
+vector
+-
+unordered_map
+-
+string
+-
+Action.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/Action.h
+

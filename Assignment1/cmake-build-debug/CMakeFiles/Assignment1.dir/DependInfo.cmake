@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/joni/CLionProjects/SPLFLIX/main.cpp" "/home/joni/CLionProjects/SPLFLIX/cmake-build-debug/CMakeFiles/SPLFLIX.dir/main.cpp.o"
+  "/home/joni/CLionProjects/SPLFLIX/Assignment1/Main.cpp" "/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles/Assignment1.dir/Main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

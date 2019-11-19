@@ -48,10 +48,10 @@ RM = /snap/clion/92/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joni/CLionProjects/SPLFLIX
+CMAKE_SOURCE_DIR = /home/joni/CLionProjects/SPLFLIX/Assignment1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joni/CLionProjects/SPLFLIX/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joni/CLionProjects/SPLFLIX/cmake-build-debug/CMakeFiles /home/joni/CLionProjects/SPLFLIX/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles /home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joni/CLionProjects/SPLFLIX/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named SPLFLIX
+# Target rules for targets named Assignment1
 
 # Build rule for target.
-SPLFLIX: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 SPLFLIX
-.PHONY : SPLFLIX
+Assignment1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Assignment1
+.PHONY : Assignment1
 
 # fast build rule for target.
-SPLFLIX/fast:
-	$(MAKE) -f CMakeFiles/SPLFLIX.dir/build.make CMakeFiles/SPLFLIX.dir/build
-.PHONY : SPLFLIX/fast
+Assignment1/fast:
+	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/build
+.PHONY : Assignment1/fast
 
-main.o: main.cpp.o
+Main.o: Main.cpp.o
 
-.PHONY : main.o
+.PHONY : Main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/SPLFLIX.dir/build.make CMakeFiles/SPLFLIX.dir/main.cpp.o
-.PHONY : main.cpp.o
+Main.cpp.o:
+	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/Main.cpp.o
+.PHONY : Main.cpp.o
 
-main.i: main.cpp.i
+Main.i: Main.cpp.i
 
-.PHONY : main.i
+.PHONY : Main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/SPLFLIX.dir/build.make CMakeFiles/SPLFLIX.dir/main.cpp.i
-.PHONY : main.cpp.i
+Main.cpp.i:
+	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/Main.cpp.i
+.PHONY : Main.cpp.i
 
-main.s: main.cpp.s
+Main.s: Main.cpp.s
 
-.PHONY : main.s
+.PHONY : Main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/SPLFLIX.dir/build.make CMakeFiles/SPLFLIX.dir/main.cpp.s
-.PHONY : main.cpp.s
+Main.cpp.s:
+	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/Main.cpp.s
+.PHONY : Main.cpp.s
 
 # Help Target
 help:
@@ -157,11 +157,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... SPLFLIX"
+	@echo "... Assignment1"
 	@echo "... edit_cache"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... Main.o"
+	@echo "... Main.i"
+	@echo "... Main.s"
 .PHONY : help
 
 
