@@ -150,6 +150,33 @@ src/Action.cpp.s:
 	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Action.cpp.s
 .PHONY : src/Action.cpp.s
 
+src/Episode.o: src/Episode.cpp.o
+
+.PHONY : src/Episode.o
+
+# target to build an object file
+src/Episode.cpp.o:
+	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Episode.cpp.o
+.PHONY : src/Episode.cpp.o
+
+src/Episode.i: src/Episode.cpp.i
+
+.PHONY : src/Episode.i
+
+# target to preprocess a source file
+src/Episode.cpp.i:
+	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Episode.cpp.i
+.PHONY : src/Episode.cpp.i
+
+src/Episode.s: src/Episode.cpp.s
+
+.PHONY : src/Episode.s
+
+# target to generate assembly for a file
+src/Episode.cpp.s:
+	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Episode.cpp.s
+.PHONY : src/Episode.cpp.s
+
 src/Main.o: src/Main.cpp.o
 
 .PHONY : src/Main.o
@@ -176,6 +203,33 @@ src/Main.s: src/Main.cpp.s
 src/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Main.cpp.s
 .PHONY : src/Main.cpp.s
+
+src/Movie.o: src/Movie.cpp.o
+
+.PHONY : src/Movie.o
+
+# target to build an object file
+src/Movie.cpp.o:
+	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Movie.cpp.o
+.PHONY : src/Movie.cpp.o
+
+src/Movie.i: src/Movie.cpp.i
+
+.PHONY : src/Movie.i
+
+# target to preprocess a source file
+src/Movie.cpp.i:
+	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Movie.cpp.i
+.PHONY : src/Movie.cpp.i
+
+src/Movie.s: src/Movie.cpp.s
+
+.PHONY : src/Movie.s
+
+# target to generate assembly for a file
+src/Movie.cpp.s:
+	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Movie.cpp.s
+.PHONY : src/Movie.cpp.s
 
 src/Session.o: src/Session.cpp.o
 
@@ -270,9 +324,15 @@ help:
 	@echo "... src/Action.o"
 	@echo "... src/Action.i"
 	@echo "... src/Action.s"
+	@echo "... src/Episode.o"
+	@echo "... src/Episode.i"
+	@echo "... src/Episode.s"
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"
+	@echo "... src/Movie.o"
+	@echo "... src/Movie.i"
+	@echo "... src/Movie.s"
 	@echo "... src/Session.o"
 	@echo "... src/Session.i"
 	@echo "... src/Session.s"

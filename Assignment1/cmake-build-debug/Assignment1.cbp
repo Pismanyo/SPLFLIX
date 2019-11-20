@@ -90,7 +90,13 @@
 		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp">
 			<Option target="Assignment1"/>
 		</Unit>
+		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Episode.cpp">
+			<Option target="Assignment1"/>
+		</Unit>
 		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Main.cpp">
+			<Option target="Assignment1"/>
+		</Unit>
+		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Movie.cpp">
 			<Option target="Assignment1"/>
 		</Unit>
 		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Session.cpp">
