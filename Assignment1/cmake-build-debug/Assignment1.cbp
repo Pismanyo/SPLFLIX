@@ -84,7 +84,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/Main.cpp">
+		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h">
+			<Option target="Assignment1"/>
+		</Unit>
+		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp">
+			<Option target="Assignment1"/>
+		</Unit>
+		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Main.cpp">
+			<Option target="Assignment1"/>
+		</Unit>
+		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Session.cpp">
+			<Option target="Assignment1"/>
+		</Unit>
+		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/src/User.cpp">
+			<Option target="Assignment1"/>
+		</Unit>
+		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Watchable.cpp">
 			<Option target="Assignment1"/>
 		</Unit>
 		<Unit filename="/home/joni/CLionProjects/SPLFLIX/Assignment1/CMakeLists.txt">
