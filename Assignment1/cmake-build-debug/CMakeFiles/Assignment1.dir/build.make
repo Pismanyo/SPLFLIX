@@ -57,30 +57,120 @@ include CMakeFiles/Assignment1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Assignment1.dir/flags.make
 
-CMakeFiles/Assignment1.dir/Main.cpp.o: CMakeFiles/Assignment1.dir/flags.make
-CMakeFiles/Assignment1.dir/Main.cpp.o: ../Main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Assignment1.dir/Main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/Main.cpp.o -c /home/joni/CLionProjects/SPLFLIX/Assignment1/Main.cpp
+CMakeFiles/Assignment1.dir/src/Main.cpp.o: CMakeFiles/Assignment1.dir/flags.make
+CMakeFiles/Assignment1.dir/src/Main.cpp.o: ../src/Main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Assignment1.dir/src/Main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/Main.cpp.o -c /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Main.cpp
 
-CMakeFiles/Assignment1.dir/Main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/Main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/SPLFLIX/Assignment1/Main.cpp > CMakeFiles/Assignment1.dir/Main.cpp.i
+CMakeFiles/Assignment1.dir/src/Main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/Main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Main.cpp > CMakeFiles/Assignment1.dir/src/Main.cpp.i
 
-CMakeFiles/Assignment1.dir/Main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/Main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/SPLFLIX/Assignment1/Main.cpp -o CMakeFiles/Assignment1.dir/Main.cpp.s
+CMakeFiles/Assignment1.dir/src/Main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/Main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Main.cpp -o CMakeFiles/Assignment1.dir/src/Main.cpp.s
+
+CMakeFiles/Assignment1.dir/src/User.cpp.o: CMakeFiles/Assignment1.dir/flags.make
+CMakeFiles/Assignment1.dir/src/User.cpp.o: ../src/User.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Assignment1.dir/src/User.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/User.cpp.o -c /home/joni/CLionProjects/SPLFLIX/Assignment1/src/User.cpp
+
+CMakeFiles/Assignment1.dir/src/User.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/User.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/SPLFLIX/Assignment1/src/User.cpp > CMakeFiles/Assignment1.dir/src/User.cpp.i
+
+CMakeFiles/Assignment1.dir/src/User.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/User.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/SPLFLIX/Assignment1/src/User.cpp -o CMakeFiles/Assignment1.dir/src/User.cpp.s
+
+CMakeFiles/Assignment1.dir/src/Session.cpp.o: CMakeFiles/Assignment1.dir/flags.make
+CMakeFiles/Assignment1.dir/src/Session.cpp.o: ../src/Session.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Assignment1.dir/src/Session.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/Session.cpp.o -c /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Session.cpp
+
+CMakeFiles/Assignment1.dir/src/Session.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/Session.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Session.cpp > CMakeFiles/Assignment1.dir/src/Session.cpp.i
+
+CMakeFiles/Assignment1.dir/src/Session.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/Session.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Session.cpp -o CMakeFiles/Assignment1.dir/src/Session.cpp.s
+
+CMakeFiles/Assignment1.dir/src/Watchable.cpp.o: CMakeFiles/Assignment1.dir/flags.make
+CMakeFiles/Assignment1.dir/src/Watchable.cpp.o: ../src/Watchable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Assignment1.dir/src/Watchable.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/Watchable.cpp.o -c /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Watchable.cpp
+
+CMakeFiles/Assignment1.dir/src/Watchable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/Watchable.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Watchable.cpp > CMakeFiles/Assignment1.dir/src/Watchable.cpp.i
+
+CMakeFiles/Assignment1.dir/src/Watchable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/Watchable.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Watchable.cpp -o CMakeFiles/Assignment1.dir/src/Watchable.cpp.s
+
+CMakeFiles/Assignment1.dir/src/Action.cpp.o: CMakeFiles/Assignment1.dir/flags.make
+CMakeFiles/Assignment1.dir/src/Action.cpp.o: ../src/Action.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Assignment1.dir/src/Action.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/Action.cpp.o -c /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp
+
+CMakeFiles/Assignment1.dir/src/Action.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/Action.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp > CMakeFiles/Assignment1.dir/src/Action.cpp.i
+
+CMakeFiles/Assignment1.dir/src/Action.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/Action.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp -o CMakeFiles/Assignment1.dir/src/Action.cpp.s
+
+CMakeFiles/Assignment1.dir/src/Episode.cpp.o: CMakeFiles/Assignment1.dir/flags.make
+CMakeFiles/Assignment1.dir/src/Episode.cpp.o: ../src/Episode.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Assignment1.dir/src/Episode.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/Episode.cpp.o -c /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Episode.cpp
+
+CMakeFiles/Assignment1.dir/src/Episode.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/Episode.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Episode.cpp > CMakeFiles/Assignment1.dir/src/Episode.cpp.i
+
+CMakeFiles/Assignment1.dir/src/Episode.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/Episode.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Episode.cpp -o CMakeFiles/Assignment1.dir/src/Episode.cpp.s
+
+CMakeFiles/Assignment1.dir/src/Movie.cpp.o: CMakeFiles/Assignment1.dir/flags.make
+CMakeFiles/Assignment1.dir/src/Movie.cpp.o: ../src/Movie.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Assignment1.dir/src/Movie.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/Movie.cpp.o -c /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Movie.cpp
+
+CMakeFiles/Assignment1.dir/src/Movie.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/Movie.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Movie.cpp > CMakeFiles/Assignment1.dir/src/Movie.cpp.i
+
+CMakeFiles/Assignment1.dir/src/Movie.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/Movie.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Movie.cpp -o CMakeFiles/Assignment1.dir/src/Movie.cpp.s
 
 # Object files for target Assignment1
 Assignment1_OBJECTS = \
-"CMakeFiles/Assignment1.dir/Main.cpp.o"
+"CMakeFiles/Assignment1.dir/src/Main.cpp.o" \
+"CMakeFiles/Assignment1.dir/src/User.cpp.o" \
+"CMakeFiles/Assignment1.dir/src/Session.cpp.o" \
+"CMakeFiles/Assignment1.dir/src/Watchable.cpp.o" \
+"CMakeFiles/Assignment1.dir/src/Action.cpp.o" \
+"CMakeFiles/Assignment1.dir/src/Episode.cpp.o" \
+"CMakeFiles/Assignment1.dir/src/Movie.cpp.o"
 
 # External object files for target Assignment1
 Assignment1_EXTERNAL_OBJECTS =
 
-Assignment1: CMakeFiles/Assignment1.dir/Main.cpp.o
+Assignment1: CMakeFiles/Assignment1.dir/src/Main.cpp.o
+Assignment1: CMakeFiles/Assignment1.dir/src/User.cpp.o
+Assignment1: CMakeFiles/Assignment1.dir/src/Session.cpp.o
+Assignment1: CMakeFiles/Assignment1.dir/src/Watchable.cpp.o
+Assignment1: CMakeFiles/Assignment1.dir/src/Action.cpp.o
+Assignment1: CMakeFiles/Assignment1.dir/src/Episode.cpp.o
+Assignment1: CMakeFiles/Assignment1.dir/src/Movie.cpp.o
 Assignment1: CMakeFiles/Assignment1.dir/build.make
 Assignment1: CMakeFiles/Assignment1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Assignment1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Assignment1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Assignment1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
