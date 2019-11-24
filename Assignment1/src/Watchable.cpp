@@ -30,7 +30,16 @@ Episode::Episode( long _id, const string &_seriesName,
                   int _length, int _season, int _episode, const vector<string> &_tags) : Watchable(_id,_length, _tags),
                                                                                          seriesName(_seriesName),season(_season),episode(_episode){}
 string Episode::toString() const {
-    return seriesName;
+    string forses="";
+    if (season<10)
+        forses="0"+season;
+    else
+        forses=season;
+    if(episode<10)
+        forses.append("E0"+episode);
+    else forses.append("E"+episode);
+
+    return seriesName+" S"+forses;
 }
 string Episode::toString2()  {
     string forses="";
@@ -50,11 +59,11 @@ string Episode::toString2()  {
     }
 
 
-    const string tostring=to_string(getId())+". "+seriesName+ " "+ forses+ " "+getLength()+" minutes ["+genres+"]";
+    const string tostring=to_string(getId())+". "+seriesName+ " "+ forses+ " "+to_string(getLength())+" minutes ["+genres+"]";
     return tostring;
 }
 
-Watchable *Episode::getNextWatchable(Session &) const {
+Watchable *Episode::getNextWatchable(Session &a) const {
     return nullptr;
 };
 
@@ -62,10 +71,10 @@ Movie::Movie(long _id, const string &_name, int _length, const std::vector<std::
                                                                                                   name(_name){}
 
 std::string Movie::toString() const {
-    return std::__cxx11::string();
+    return name;
 }
 
-Watchable *Movie::getNextWatchable(Session &) const {
+Watchable *Movie::getNextWatchable(Session &a) const {
     return nullptr;
 }
 

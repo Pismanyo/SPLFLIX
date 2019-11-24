@@ -148,3 +148,11 @@ int Session::getCounter() {
     return counter;
 }
 
+std::vector<Watchable *> *Session::getContent() {
+    return &content;
+}
+
+std::vector<BaseAction *> *Session::actionLog() {
+    return &actionsLog;
+}
+
