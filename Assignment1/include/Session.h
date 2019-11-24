@@ -17,7 +17,7 @@ public:
     void exit();
     string getInput2();
     string getInput3();
-    unordered_map<string,User*>* getUserMap();
+    unordered_map<string,User*> *getUserMap();
     int getCounter();
 private:
     std::vector<Watchable*> content;

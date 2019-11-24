@@ -52,8 +52,8 @@ void Session::start() {
     cout<<"SPLFLIX is now on!"<<endl;
     const string na="default";
     activeUser =new LengthRecommenderUser(na);
-    std::pair<std::string,User*> hjh("default",activeUser);
-    userMap.insert(hjh);
+   // std::pair<std::string,User*> hjh("default",activeUser);
+    userMap.insert({"default",activeUser});
     string answer1;
     string input1;
     while (answer1!="exit")
@@ -123,7 +123,6 @@ void Session::start() {
     }
    // exit();
 
-}
 
 void Session::exit() {
     //delete users
@@ -141,8 +140,8 @@ string Session::getInput3() {
     return input3;
 }
 
-unordered_map<string, User *> Session::getUserMap() {
-    return userMap;
+unordered_map<string, User*> *Session::getUserMap() {
+    return &userMap;
 }
 
 int Session::getCounter() {
