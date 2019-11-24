@@ -45,7 +45,7 @@ void CreateUser::act(Session &sess)
 {
     string input2=sess.getInput2();
     string input3=sess.getInput3();
-   if(sess.getCounter()==3) {
+   if(sess.getCounter()==3&&sess.getUserMap()->find(input2)==sess.getUserMap()->end()) {
        if (input3 == "len") {
            LengthRecommenderUser *cur = new LengthRecommenderUser(input2);
            sess.getUserMap()->insert({input2, cur});
