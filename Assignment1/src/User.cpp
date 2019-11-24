@@ -15,7 +15,7 @@ string User::getName() const {
 std::vector<Watchable *> User::get_history() const {
     return vector<Watchable *>();
 }
-RerunRecommenderUser::RerunRecommenderUser(const std::string &name) : User(name) {
+RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
 
 }
 

@@ -36,6 +36,7 @@ public:
 
 class ChangeActiveUser : public BaseAction {
 public:
+    ChangeActiveUser();
 	virtual void act(Session& sess);
 	virtual std::string toString() const;
 };

@@ -39,32 +39,38 @@ CreateUser::CreateUser() : BaseAction (){
 
 }
 
-
-
 void CreateUser::act(Session &sess)
-{
-    string input2=sess.getInput2();
-    string input3=sess.getInput3();
-   if(sess.getCounter()==3&&sess.getUserMap()->find(input2)==sess.getUserMap()->end()) {
-       if (input3 == "len") {
-           LengthRecommenderUser *cur = new LengthRecommenderUser(input2);
-           sess.getUserMap()->insert({input2, cur});
+    {
+        string input2=sess.getInput2();
+        string input3=sess.getInput3();
+        bool works= false;
+       if(sess.getCounter()==3&&sess.getUserMap()->find(input2)==sess.getUserMap()->end())
+       {
+           if (input3 == "len") {
+               LengthRecommenderUser *cur = new LengthRecommenderUser(input2);
+               sess.getUserMap()->insert({input2, cur});
+               works=true;
+           }
+           if (input3 == "rer") {
+               RerunRecommenderUser *cur = new RerunRecommenderUser(input2);
+               sess.getUserMap()->insert({input2, cur});
+               works=true;
+           } if (input3 == "gen") {
+               GenreRecommenderUser *cur = new GenreRecommenderUser(input2);
+               sess.getUserMap()->insert({input2, cur});
+               works=true;
+           }
+
        }
-       if (input3 == "rer") {
-           RerunRecommenderUser *cur = new RerunRecommenderUser(input2);
-           sess.getUserMap()->insert({input2, cur});
-       } else if (input3 == "gen") {
-           GenreRecommenderUser *cur = new GenreRecommenderUser(input2);
-           sess.getUserMap()->insert({input2, cur});
-       }
-       complete();
-   }
-   else {
-       //error();
-   }
+          if(works)
+              complete();
+          else {
+              //error
+          }
+    }
+ChangeActiveUser::ChangeActiveUser() : BaseAction (){
 
 }
-
 std::string CreateUser::toString() const {
     return std::__cxx11::string();
 }
