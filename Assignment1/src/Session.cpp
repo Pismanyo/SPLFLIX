@@ -54,15 +54,11 @@ void Session::start() {
     activeUser =new LengthRecommenderUser(na);
     std::pair<std::string,User*> hjh("default",activeUser);
     userMap.insert(hjh);
-
     string answer1;
     string input1;
-
-   getline(cin,answer1);
-
     while (answer1!="exit")
     {
-
+        getline(cin,answer1);
         string word;
         counter=0;
         stringstream iss(answer1);
@@ -93,6 +89,7 @@ void Session::start() {
             {
                // goodinput=true;
 
+
             }
             if("deleteuser"==input1)
             {
@@ -110,8 +107,6 @@ void Session::start() {
             {
                 CreateUser *what =new CreateUser();
                 what->act(*this);
-
-
                // goodinput=true;
 
             }
@@ -125,7 +120,6 @@ void Session::start() {
        // if(!goodinput) {
         //    cout << "bad input, try again" << endl;
         }
-        getline(cin,answer1);
     }
    // exit();
 
