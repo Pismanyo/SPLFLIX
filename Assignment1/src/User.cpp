@@ -1,6 +1,8 @@
 
 #include "../include/User.h"
 #include "../include/Session.h"
+#include "../include/Watchable.h"
+
 
 using namespace std;
 
@@ -29,16 +31,14 @@ LengthRecommenderUser::LengthRecommenderUser(const std::string &name) : User(nam
 }
 
 Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
-    vector<Watchable*> *con=s.getContent()
-    vector<Watchable*> *his=this->get_history();
+    vector<Watchable*> *con=s.getContent();
+    vector<Watchable*> his=this->get_history();
     int sum=0;
     for (int i=0;i<his.size();++i)
     {
-        sum+=his[i].
-
+       sum+= his[i]->getLength();
     }
 
-    this->history.;
 
 
 
