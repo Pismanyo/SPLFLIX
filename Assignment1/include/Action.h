@@ -29,7 +29,8 @@ private:
 
 class CreateUser  : public BaseAction {
 public:
-	virtual void act(Session& sess);
+    CreateUser();
+    virtual void act(Session& sess);
 	virtual std::string toString() const;
 };
 

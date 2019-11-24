@@ -1,6 +1,10 @@
 
 
 #include "../include/Action.h"
+#include "../include/Session.h"
+#include "../include/User.h"
+
+using namespace std;
 
 ActionStatus BaseAction::getStatus() const {
     return COMPLETED;
@@ -31,4 +35,37 @@ std::string Exit::toString() const {
 void Exit::act(Session &sess) {
 
 }
+CreateUser::CreateUser() : BaseAction (){
 
+}
+
+
+
+void CreateUser::act(Session &sess)
+{
+    string input2=sess.getInput2();
+    string input3=sess.getInput3();
+
+   if()
+    if(input3 == "len")
+    {
+        LengthRecommenderUser *cur=new LengthRecommenderUser(input2);
+        sess.getUserMap()->insert({input2,cur});
+
+    }
+    if(input3 == "rer")
+    {
+        RerunRecommenderUser *cur=new RerunRecommenderUser(input2);
+        sess.getUserMap()->insert({input2,cur});
+    }
+    else if(input3 == "gen")
+    {
+        GenreRecommenderUser *cur=new GenreRecommenderUser(input2);
+        sess.getUserMap()->insert({input2,cur});
+    }
+
+}
+
+std::string CreateUser::toString() const {
+    return std::__cxx11::string();
+}

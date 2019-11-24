@@ -52,22 +52,20 @@ void Session::start() {
     cout<<"SPLFLIX is now on!"<<endl;
     const string na="default";
     activeUser =new LengthRecommenderUser(na);
+    std::pair<std::string,User*> hjh("default",activeUser);
+    userMap.insert(hjh);
+
     string answer1;
     string input1;
-    string input2;
-    string input3;
+
    getline(cin,answer1);
 
     while (answer1!="exit")
     {
-        bool goodinput= false;
-        // cin>>answer1;
-        // word variable to store word
+
         string word;
-        int counter=0;
-        // making a string stream
+        counter=0;
         stringstream iss(answer1);
-        // Read and print each word.
         while (iss >> word&&counter<4)
         {
             if(counter==0)
@@ -82,27 +80,27 @@ void Session::start() {
         {
             if (input1 == "log")
             {
-                goodinput=true;
+              //  goodinput=true;
 
             }
             if("content"==input1) {
-                goodinput = true;
+              //  goodinput = true;
             }
         }
         if(counter=2)
         {
             if (input1 == "changeUser")
             {
-                goodinput=true;
+               // goodinput=true;
 
             }
             if("deleteuser"==input1)
             {
-                goodinput=true;
+            //    goodinput=true;
             }
             if("watch"==input1)
             {
-                goodinput=true;
+               // goodinput=true;
             }
 
         }
@@ -110,21 +108,26 @@ void Session::start() {
         {
             if (input1 == "createuser")
             {
-                goodinput=true;
+                CreateUser *what =new CreateUser();
+                what->act(*this);
+
+
+               // goodinput=true;
+
             }
             if("dupuser"==input1)
             {
-                goodinput=true;
+              //  goodinput=true;
             }
 
         }
 
-        if(!goodinput) {
-            cout << "bad input, try again" << endl;
+       // if(!goodinput) {
+        //    cout << "bad input, try again" << endl;
         }
         getline(cin,answer1);
     }
-    exit();
+   // exit();
 
 }
 
@@ -136,3 +139,19 @@ void Session::exit() {
     this->start();
 
 }
+
+string Session::getInput2() {
+    return input2;
+}
+string Session::getInput3() {
+    return input3;
+}
+
+unordered_map<string, User *> Session::getUserMap() {
+    return userMap;
+}
+
+int Session::getCounter() {
+    return counter;
+}
+
