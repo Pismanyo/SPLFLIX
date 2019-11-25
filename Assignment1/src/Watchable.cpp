@@ -21,6 +21,10 @@ int Watchable::getLength() const  {
     return length;
 }
 
+Watchable *Watchable::clone() {
+    return nullptr;
+}
+
 
 Watchable::~Watchable() = default;
 
@@ -101,6 +105,10 @@ Watchable *Episode::getNextWatchable(Session &a) const {
     }
 
     return (*(a.getActiveUser())).getRecommendation(a);
+}
+
+Watchable *Episode::clone()const  {
+    return new Episode(*this);
 };
 
 Movie::Movie(long _id, const string &_name, int _length, const std::vector<std::string> &_tags) : Watchable(_id,_length, _tags),
@@ -112,6 +120,10 @@ std::string Movie::toString() const {
 
 Watchable *Movie::getNextWatchable(Session &a) const {
     return (*(a.getActiveUser())).getRecommendation(a);
+}
+
+Watchable *Movie::clone() const {
+    return new Movie(*this);
 }
 
 

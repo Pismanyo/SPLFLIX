@@ -15,6 +15,7 @@ public:
     virtual std::string toString() const = 0;
     virtual Watchable* getNextWatchable(Session&) const = 0;
     long getId() const;
+    virtual Watchable* clone() const = 0;
     int getLength() const ;
     std::vector<std::string> getTags() const ;
 private:
@@ -28,8 +29,10 @@ public:
     Movie(long id, const std::string& name, int length, const std::vector<std::string>& tags);
     virtual std::string toString() const; // differnet from header given?
     virtual Watchable* getNextWatchable(Session&) const;
+    virtual Watchable* clone() const ;
 private:
     std::string name;
+
 };
 
 
@@ -39,6 +42,7 @@ public:
             int length, int season, int episode, const std::vector<std::string> &tags);
     virtual std::string toString() const;
     std::string toString2 ();
+    virtual Watchable* clone() const ;
     virtual std::string toStringNextSesson() const ;
     virtual std::string toStringNextEpsoide() const ;
     virtual Watchable* getNextWatchable(Session&) const;

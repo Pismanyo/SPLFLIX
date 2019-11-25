@@ -22,10 +22,12 @@ std::string BaseAction::getErrorMsg() const {
 void BaseAction::error(const std::string &errorMsg) {
     this->errorMsg=(errorMsg);
     status=ERROR;
+    cout<<errorMsg<<endl;
 }
 
 void BaseAction::complete() {
     status=COMPLETED;
+
 
 }
 
@@ -140,6 +142,17 @@ void DeleteUser::act(Session &sess) {
 DuplicateUser::DuplicateUser() : BaseAction (){}
 
 void DuplicateUser::act(Session &sess) {
+    if(sess.getCounter()!=3||sess.containsUser(sess.getInput2())|!sess.containsUser(sess.getInput3()))
+    {
+        error("Incorrect command");
+
+    }
+
+    User *todup=sess.getUser(sess.getInput2());
+    User dup=new auto(todup);
+
+
+
 
 }
 

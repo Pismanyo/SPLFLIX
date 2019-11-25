@@ -7,10 +7,24 @@
 using namespace std;
 
 
-User::User(const std::string &name):name(name) {
+User::User(const std::string &name):name(name) {}
+User::User(const User &other):name(other.name) {
 
+    history=other.history;
+    for (auto watchable: other.history)
+        watchable= nullptr;
+
+
+
+   /*
+    for (Watchable* watch: other.history)
+    {
+        this->history.push_back(watch->clone());
+    }
+    */
 
 }
+
 
 string User::getName() const {
     return name;
@@ -19,6 +33,8 @@ string User::getName() const {
 std::vector<Watchable *> User::get_history() const {
     return history;
 }
+
+
 RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
     Reruns=0;
 
@@ -32,6 +48,11 @@ Watchable *RerunRecommenderUser::getRecommendation(Session &s) {
 
     return cur;
 }
+
+RerunRecommenderUser::RerunRecommenderUser(const RerunRecommenderUser &other) : User(other) {
+    this->Reruns=other.Reruns;
+}
+
 LengthRecommenderUser::LengthRecommenderUser(const std::string &name) : User(name) {
 
 }
@@ -93,6 +114,9 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
 
     return cur;
 }
+
+LengthRecommenderUser::LengthRecommenderUser(const LengthRecommenderUser &other) : User(other){}
+
 GenreRecommenderUser::GenreRecommenderUser(const std::string &name) : User(name) {
 
 }
@@ -100,3 +124,5 @@ GenreRecommenderUser::GenreRecommenderUser(const std::string &name) : User(name)
 Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
     return nullptr;
 }
+
+GenreRecommenderUser::GenreRecommenderUser(const GenreRecommenderUser &other) :User(other) {}

@@ -24,6 +24,7 @@ public:
     int getCounter();
     void setActiveUser(User *Active);
     bool containsUser(std::string);
+    User* getUser(std::string);
 
 private:
     std::vector<Watchable*> content;

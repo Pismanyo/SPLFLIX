@@ -11,6 +11,7 @@ class Session;
 class User{
 public:
     User(const std::string& name);
+    User(const User& other);
     virtual Watchable* getRecommendation(Session& s) = 0;
     std::string getName() const;
     std::vector<Watchable*> get_history() const;
@@ -25,12 +26,15 @@ private:
 class LengthRecommenderUser : public User {
 public:
     LengthRecommenderUser(const std::string& name);
+    LengthRecommenderUser(const LengthRecommenderUser& other);
+    User *clone();
     virtual Watchable* getRecommendation(Session& s);
 private:
 };
 
 class RerunRecommenderUser : public User {
 public:
+    RerunRecommenderUser(const RerunRecommenderUser& other);
     RerunRecommenderUser(const std::string& name);
     virtual Watchable* getRecommendation(Session& s);
 private:
@@ -40,6 +44,8 @@ private:
 class GenreRecommenderUser : public User {
 public:
     GenreRecommenderUser(const std::string& name);
+    GenreRecommenderUser(const GenreRecommenderUser& other);
+
     virtual Watchable* getRecommendation(Session& s);
 private:
 };

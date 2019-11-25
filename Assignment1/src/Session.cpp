@@ -166,9 +166,12 @@ void Session::setActiveUser(User *Active) {
 }
 
 bool Session::containsUser(string name) {
-    if(userMap.find(name)==userMap.end())
-        return false;
-    return true;
+    return !(userMap.find(name) == userMap.end());
+}
+
+User* Session::getUser(std::string name) {
+
+    return userMap.find(name)->second;
 }
 
 
