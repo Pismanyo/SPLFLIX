@@ -90,37 +90,13 @@
 		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp">
 			<Option target="Assignment1"/>
 		</Unit>
-		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/CreateUser.cpp">
-			<Option target="Assignment1"/>
-		</Unit>
-		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Episode.cpp">
-			<Option target="Assignment1"/>
-		</Unit>
-		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/GenreRecommenderUser.cpp">
-			<Option target="Assignment1"/>
-		</Unit>
-		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/LengthRecommenderUser.cpp">
-			<Option target="Assignment1"/>
-		</Unit>
 		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Main.cpp">
-			<Option target="Assignment1"/>
-		</Unit>
-		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Movie.cpp">
-			<Option target="Assignment1"/>
-		</Unit>
-		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/PrintActionsLog.cpp">
-			<Option target="Assignment1"/>
-		</Unit>
-		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/RerunRecommenderUser.cpp">
 			<Option target="Assignment1"/>
 		</Unit>
 		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Session.cpp">
 			<Option target="Assignment1"/>
 		</Unit>
 		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/User.cpp">
-			<Option target="Assignment1"/>
-		</Unit>
-		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Watch.cpp">
 			<Option target="Assignment1"/>
 		</Unit>
 		<Unit filename="/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Watchable.cpp">

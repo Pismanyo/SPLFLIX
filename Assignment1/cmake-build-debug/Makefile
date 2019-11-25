@@ -150,114 +150,6 @@ src/Action.cpp.s:
 	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Action.cpp.s
 .PHONY : src/Action.cpp.s
 
-src/CreateUser.o: src/CreateUser.cpp.o
-
-.PHONY : src/CreateUser.o
-
-# target to build an object file
-src/CreateUser.cpp.o:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/CreateUser.cpp.o
-.PHONY : src/CreateUser.cpp.o
-
-src/CreateUser.i: src/CreateUser.cpp.i
-
-.PHONY : src/CreateUser.i
-
-# target to preprocess a source file
-src/CreateUser.cpp.i:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/CreateUser.cpp.i
-.PHONY : src/CreateUser.cpp.i
-
-src/CreateUser.s: src/CreateUser.cpp.s
-
-.PHONY : src/CreateUser.s
-
-# target to generate assembly for a file
-src/CreateUser.cpp.s:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/CreateUser.cpp.s
-.PHONY : src/CreateUser.cpp.s
-
-src/Episode.o: src/Episode.cpp.o
-
-.PHONY : src/Episode.o
-
-# target to build an object file
-src/Episode.cpp.o:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Episode.cpp.o
-.PHONY : src/Episode.cpp.o
-
-src/Episode.i: src/Episode.cpp.i
-
-.PHONY : src/Episode.i
-
-# target to preprocess a source file
-src/Episode.cpp.i:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Episode.cpp.i
-.PHONY : src/Episode.cpp.i
-
-src/Episode.s: src/Episode.cpp.s
-
-.PHONY : src/Episode.s
-
-# target to generate assembly for a file
-src/Episode.cpp.s:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Episode.cpp.s
-.PHONY : src/Episode.cpp.s
-
-src/GenreRecommenderUser.o: src/GenreRecommenderUser.cpp.o
-
-.PHONY : src/GenreRecommenderUser.o
-
-# target to build an object file
-src/GenreRecommenderUser.cpp.o:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.o
-.PHONY : src/GenreRecommenderUser.cpp.o
-
-src/GenreRecommenderUser.i: src/GenreRecommenderUser.cpp.i
-
-.PHONY : src/GenreRecommenderUser.i
-
-# target to preprocess a source file
-src/GenreRecommenderUser.cpp.i:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.i
-.PHONY : src/GenreRecommenderUser.cpp.i
-
-src/GenreRecommenderUser.s: src/GenreRecommenderUser.cpp.s
-
-.PHONY : src/GenreRecommenderUser.s
-
-# target to generate assembly for a file
-src/GenreRecommenderUser.cpp.s:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.s
-.PHONY : src/GenreRecommenderUser.cpp.s
-
-src/LengthRecommenderUser.o: src/LengthRecommenderUser.cpp.o
-
-.PHONY : src/LengthRecommenderUser.o
-
-# target to build an object file
-src/LengthRecommenderUser.cpp.o:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.o
-.PHONY : src/LengthRecommenderUser.cpp.o
-
-src/LengthRecommenderUser.i: src/LengthRecommenderUser.cpp.i
-
-.PHONY : src/LengthRecommenderUser.i
-
-# target to preprocess a source file
-src/LengthRecommenderUser.cpp.i:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.i
-.PHONY : src/LengthRecommenderUser.cpp.i
-
-src/LengthRecommenderUser.s: src/LengthRecommenderUser.cpp.s
-
-.PHONY : src/LengthRecommenderUser.s
-
-# target to generate assembly for a file
-src/LengthRecommenderUser.cpp.s:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.s
-.PHONY : src/LengthRecommenderUser.cpp.s
-
 src/Main.o: src/Main.cpp.o
 
 .PHONY : src/Main.o
@@ -284,87 +176,6 @@ src/Main.s: src/Main.cpp.s
 src/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Main.cpp.s
 .PHONY : src/Main.cpp.s
-
-src/Movie.o: src/Movie.cpp.o
-
-.PHONY : src/Movie.o
-
-# target to build an object file
-src/Movie.cpp.o:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Movie.cpp.o
-.PHONY : src/Movie.cpp.o
-
-src/Movie.i: src/Movie.cpp.i
-
-.PHONY : src/Movie.i
-
-# target to preprocess a source file
-src/Movie.cpp.i:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Movie.cpp.i
-.PHONY : src/Movie.cpp.i
-
-src/Movie.s: src/Movie.cpp.s
-
-.PHONY : src/Movie.s
-
-# target to generate assembly for a file
-src/Movie.cpp.s:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Movie.cpp.s
-.PHONY : src/Movie.cpp.s
-
-src/PrintActionsLog.o: src/PrintActionsLog.cpp.o
-
-.PHONY : src/PrintActionsLog.o
-
-# target to build an object file
-src/PrintActionsLog.cpp.o:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.o
-.PHONY : src/PrintActionsLog.cpp.o
-
-src/PrintActionsLog.i: src/PrintActionsLog.cpp.i
-
-.PHONY : src/PrintActionsLog.i
-
-# target to preprocess a source file
-src/PrintActionsLog.cpp.i:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.i
-.PHONY : src/PrintActionsLog.cpp.i
-
-src/PrintActionsLog.s: src/PrintActionsLog.cpp.s
-
-.PHONY : src/PrintActionsLog.s
-
-# target to generate assembly for a file
-src/PrintActionsLog.cpp.s:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.s
-.PHONY : src/PrintActionsLog.cpp.s
-
-src/RerunRecommenderUser.o: src/RerunRecommenderUser.cpp.o
-
-.PHONY : src/RerunRecommenderUser.o
-
-# target to build an object file
-src/RerunRecommenderUser.cpp.o:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.o
-.PHONY : src/RerunRecommenderUser.cpp.o
-
-src/RerunRecommenderUser.i: src/RerunRecommenderUser.cpp.i
-
-.PHONY : src/RerunRecommenderUser.i
-
-# target to preprocess a source file
-src/RerunRecommenderUser.cpp.i:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.i
-.PHONY : src/RerunRecommenderUser.cpp.i
-
-src/RerunRecommenderUser.s: src/RerunRecommenderUser.cpp.s
-
-.PHONY : src/RerunRecommenderUser.s
-
-# target to generate assembly for a file
-src/RerunRecommenderUser.cpp.s:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.s
-.PHONY : src/RerunRecommenderUser.cpp.s
 
 src/Session.o: src/Session.cpp.o
 
@@ -420,33 +231,6 @@ src/User.cpp.s:
 	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/User.cpp.s
 .PHONY : src/User.cpp.s
 
-src/Watch.o: src/Watch.cpp.o
-
-.PHONY : src/Watch.o
-
-# target to build an object file
-src/Watch.cpp.o:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Watch.cpp.o
-.PHONY : src/Watch.cpp.o
-
-src/Watch.i: src/Watch.cpp.i
-
-.PHONY : src/Watch.i
-
-# target to preprocess a source file
-src/Watch.cpp.i:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Watch.cpp.i
-.PHONY : src/Watch.cpp.i
-
-src/Watch.s: src/Watch.cpp.s
-
-.PHONY : src/Watch.s
-
-# target to generate assembly for a file
-src/Watch.cpp.s:
-	$(MAKE) -f CMakeFiles/Assignment1.dir/build.make CMakeFiles/Assignment1.dir/src/Watch.cpp.s
-.PHONY : src/Watch.cpp.s
-
 src/Watchable.o: src/Watchable.cpp.o
 
 .PHONY : src/Watchable.o
@@ -486,39 +270,15 @@ help:
 	@echo "... src/Action.o"
 	@echo "... src/Action.i"
 	@echo "... src/Action.s"
-	@echo "... src/CreateUser.o"
-	@echo "... src/CreateUser.i"
-	@echo "... src/CreateUser.s"
-	@echo "... src/Episode.o"
-	@echo "... src/Episode.i"
-	@echo "... src/Episode.s"
-	@echo "... src/GenreRecommenderUser.o"
-	@echo "... src/GenreRecommenderUser.i"
-	@echo "... src/GenreRecommenderUser.s"
-	@echo "... src/LengthRecommenderUser.o"
-	@echo "... src/LengthRecommenderUser.i"
-	@echo "... src/LengthRecommenderUser.s"
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"
-	@echo "... src/Movie.o"
-	@echo "... src/Movie.i"
-	@echo "... src/Movie.s"
-	@echo "... src/PrintActionsLog.o"
-	@echo "... src/PrintActionsLog.i"
-	@echo "... src/PrintActionsLog.s"
-	@echo "... src/RerunRecommenderUser.o"
-	@echo "... src/RerunRecommenderUser.i"
-	@echo "... src/RerunRecommenderUser.s"
 	@echo "... src/Session.o"
 	@echo "... src/Session.i"
 	@echo "... src/Session.s"
 	@echo "... src/User.o"
 	@echo "... src/User.i"
 	@echo "... src/User.s"
-	@echo "... src/Watch.o"
-	@echo "... src/Watch.i"
-	@echo "... src/Watch.s"
 	@echo "... src/Watchable.o"
 	@echo "... src/Watchable.i"
 	@echo "... src/Watchable.s"

@@ -122,125 +122,13 @@ CMakeFiles/Assignment1.dir/src/Action.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/Action.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp -o CMakeFiles/Assignment1.dir/src/Action.cpp.s
 
-CMakeFiles/Assignment1.dir/src/Episode.cpp.o: CMakeFiles/Assignment1.dir/flags.make
-CMakeFiles/Assignment1.dir/src/Episode.cpp.o: ../src/Episode.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Assignment1.dir/src/Episode.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/Episode.cpp.o -c /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Episode.cpp
-
-CMakeFiles/Assignment1.dir/src/Episode.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/Episode.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Episode.cpp > CMakeFiles/Assignment1.dir/src/Episode.cpp.i
-
-CMakeFiles/Assignment1.dir/src/Episode.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/Episode.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Episode.cpp -o CMakeFiles/Assignment1.dir/src/Episode.cpp.s
-
-CMakeFiles/Assignment1.dir/src/Movie.cpp.o: CMakeFiles/Assignment1.dir/flags.make
-CMakeFiles/Assignment1.dir/src/Movie.cpp.o: ../src/Movie.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Assignment1.dir/src/Movie.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/Movie.cpp.o -c /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Movie.cpp
-
-CMakeFiles/Assignment1.dir/src/Movie.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/Movie.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Movie.cpp > CMakeFiles/Assignment1.dir/src/Movie.cpp.i
-
-CMakeFiles/Assignment1.dir/src/Movie.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/Movie.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Movie.cpp -o CMakeFiles/Assignment1.dir/src/Movie.cpp.s
-
-CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.o: CMakeFiles/Assignment1.dir/flags.make
-CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.o: ../src/LengthRecommenderUser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.o -c /home/lior/CLionProjects/SPLFLIX/Assignment1/src/LengthRecommenderUser.cpp
-
-CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lior/CLionProjects/SPLFLIX/Assignment1/src/LengthRecommenderUser.cpp > CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.i
-
-CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lior/CLionProjects/SPLFLIX/Assignment1/src/LengthRecommenderUser.cpp -o CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.s
-
-CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.o: CMakeFiles/Assignment1.dir/flags.make
-CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.o: ../src/RerunRecommenderUser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.o -c /home/lior/CLionProjects/SPLFLIX/Assignment1/src/RerunRecommenderUser.cpp
-
-CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lior/CLionProjects/SPLFLIX/Assignment1/src/RerunRecommenderUser.cpp > CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.i
-
-CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lior/CLionProjects/SPLFLIX/Assignment1/src/RerunRecommenderUser.cpp -o CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.s
-
-CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.o: CMakeFiles/Assignment1.dir/flags.make
-CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.o: ../src/GenreRecommenderUser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.o -c /home/lior/CLionProjects/SPLFLIX/Assignment1/src/GenreRecommenderUser.cpp
-
-CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lior/CLionProjects/SPLFLIX/Assignment1/src/GenreRecommenderUser.cpp > CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.i
-
-CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lior/CLionProjects/SPLFLIX/Assignment1/src/GenreRecommenderUser.cpp -o CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.s
-
-CMakeFiles/Assignment1.dir/src/CreateUser.cpp.o: CMakeFiles/Assignment1.dir/flags.make
-CMakeFiles/Assignment1.dir/src/CreateUser.cpp.o: ../src/CreateUser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Assignment1.dir/src/CreateUser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/CreateUser.cpp.o -c /home/lior/CLionProjects/SPLFLIX/Assignment1/src/CreateUser.cpp
-
-CMakeFiles/Assignment1.dir/src/CreateUser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/CreateUser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lior/CLionProjects/SPLFLIX/Assignment1/src/CreateUser.cpp > CMakeFiles/Assignment1.dir/src/CreateUser.cpp.i
-
-CMakeFiles/Assignment1.dir/src/CreateUser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/CreateUser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lior/CLionProjects/SPLFLIX/Assignment1/src/CreateUser.cpp -o CMakeFiles/Assignment1.dir/src/CreateUser.cpp.s
-
-CMakeFiles/Assignment1.dir/src/Watch.cpp.o: CMakeFiles/Assignment1.dir/flags.make
-CMakeFiles/Assignment1.dir/src/Watch.cpp.o: ../src/Watch.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Assignment1.dir/src/Watch.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/Watch.cpp.o -c /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Watch.cpp
-
-CMakeFiles/Assignment1.dir/src/Watch.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/Watch.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Watch.cpp > CMakeFiles/Assignment1.dir/src/Watch.cpp.i
-
-CMakeFiles/Assignment1.dir/src/Watch.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/Watch.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Watch.cpp -o CMakeFiles/Assignment1.dir/src/Watch.cpp.s
-
-CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.o: CMakeFiles/Assignment1.dir/flags.make
-CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.o: ../src/PrintActionsLog.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.o -c /home/lior/CLionProjects/SPLFLIX/Assignment1/src/PrintActionsLog.cpp
-
-CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lior/CLionProjects/SPLFLIX/Assignment1/src/PrintActionsLog.cpp > CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.i
-
-CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lior/CLionProjects/SPLFLIX/Assignment1/src/PrintActionsLog.cpp -o CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.s
-
 # Object files for target Assignment1
 Assignment1_OBJECTS = \
 "CMakeFiles/Assignment1.dir/src/Main.cpp.o" \
 "CMakeFiles/Assignment1.dir/src/User.cpp.o" \
 "CMakeFiles/Assignment1.dir/src/Session.cpp.o" \
 "CMakeFiles/Assignment1.dir/src/Watchable.cpp.o" \
-"CMakeFiles/Assignment1.dir/src/Action.cpp.o" \
-"CMakeFiles/Assignment1.dir/src/Episode.cpp.o" \
-"CMakeFiles/Assignment1.dir/src/Movie.cpp.o" \
-"CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.o" \
-"CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.o" \
-"CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.o" \
-"CMakeFiles/Assignment1.dir/src/CreateUser.cpp.o" \
-"CMakeFiles/Assignment1.dir/src/Watch.cpp.o" \
-"CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.o"
+"CMakeFiles/Assignment1.dir/src/Action.cpp.o"
 
 # External object files for target Assignment1
 Assignment1_EXTERNAL_OBJECTS =
@@ -250,17 +138,9 @@ Assignment1: CMakeFiles/Assignment1.dir/src/User.cpp.o
 Assignment1: CMakeFiles/Assignment1.dir/src/Session.cpp.o
 Assignment1: CMakeFiles/Assignment1.dir/src/Watchable.cpp.o
 Assignment1: CMakeFiles/Assignment1.dir/src/Action.cpp.o
-Assignment1: CMakeFiles/Assignment1.dir/src/Episode.cpp.o
-Assignment1: CMakeFiles/Assignment1.dir/src/Movie.cpp.o
-Assignment1: CMakeFiles/Assignment1.dir/src/LengthRecommenderUser.cpp.o
-Assignment1: CMakeFiles/Assignment1.dir/src/RerunRecommenderUser.cpp.o
-Assignment1: CMakeFiles/Assignment1.dir/src/GenreRecommenderUser.cpp.o
-Assignment1: CMakeFiles/Assignment1.dir/src/CreateUser.cpp.o
-Assignment1: CMakeFiles/Assignment1.dir/src/Watch.cpp.o
-Assignment1: CMakeFiles/Assignment1.dir/src/PrintActionsLog.cpp.o
 Assignment1: CMakeFiles/Assignment1.dir/build.make
 Assignment1: CMakeFiles/Assignment1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Assignment1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Assignment1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Assignment1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
