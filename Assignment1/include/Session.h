@@ -22,6 +22,9 @@ public:
     std::vector<BaseAction*> *actionLog();
     User* getActiveUser();
     int getCounter();
+    void setActiveUser(User *Active);
+    bool containsUser(std::string);
+
 private:
     std::vector<Watchable*> content;
     std::vector<BaseAction*> actionsLog;
@@ -30,6 +33,5 @@ private:
     std::string input2;
     std:: string input3;
     int counter;
-
 };
 #endif

@@ -160,3 +160,16 @@ User *Session::getActiveUser() {
     return activeUser;
 }
 
+void Session::setActiveUser(User *Active) {
+
+    activeUser=Active;
+}
+
+bool Session::containsUser(string name) {
+    if(userMap.find(name)==userMap.end())
+        return false;
+    return true;
+}
+
+
+

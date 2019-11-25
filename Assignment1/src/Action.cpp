@@ -10,11 +10,10 @@ ActionStatus BaseAction::getStatus() const {
     return status;
 }
 
-BaseAction::BaseAction() {
-    errorMsg="ERROR!";
-    status=PENDING;
 
-}
+
+
+BaseAction::BaseAction(): errorMsg("Error"),status(PENDING) {}
 
 std::string BaseAction::getErrorMsg() const {
     return errorMsg;
@@ -30,13 +29,8 @@ void BaseAction::complete() {
 
 }
 
-std::string Exit::toString() const {
-    return std::__cxx11::string();
-}
 
-void Exit::act(Session &sess) {
 
-}
 CreateUser::CreateUser() : BaseAction (){
 
 }
@@ -46,7 +40,7 @@ void CreateUser::act(Session &sess)
         string input2=sess.getInput2();
         string input3=sess.getInput3();
         bool works= false;
-       if(sess.getCounter()==3&&sess.getUserMap()->find(input2)==sess.getUserMap()->end())
+        if(sess.getCounter()==3&&sess.getUserMap()->find(input2)==sess.getUserMap()->end())
        {
            if (input3 == "len") {
                LengthRecommenderUser *cur = new LengthRecommenderUser(input2);
@@ -70,12 +64,35 @@ void CreateUser::act(Session &sess)
               //error
           }
     }
-ChangeActiveUser::ChangeActiveUser() : BaseAction (){
 
-}
 std::string CreateUser::toString() const {
     return std::__cxx11::string();
 }
+
+
+
+ChangeActiveUser::ChangeActiveUser() : BaseAction (){}
+
+void ChangeActiveUser::act(Session &sess) {
+    if (sess.getCounter()==2) {
+        unordered_map<string, User *> *userList = sess.getUserMap();
+        unordered_map<string, User *>::const_iterator got = userList->find(sess.getInput2());
+        if (sess.getCounter() != 2 | got == userList->end())
+            error("User Not Found");
+        else {
+            sess.setActiveUser(got->second);
+            complete();
+        }
+    }
+    else error("Incorrect command");
+
+
+}
+
+
+
+
+Watch::Watch() : BaseAction (){}
 
 void Watch::act(Session &sess) {
 
@@ -84,10 +101,77 @@ void Watch::act(Session &sess) {
 std::string Watch::toString() const {
     return std::__cxx11::string();
 }
-std::string PrintActionsLog::toString() const {
-    return std::__cxx11::string();
-}
+
+
+
+PrintActionsLog::PrintActionsLog() : BaseAction (){}
 
 void PrintActionsLog::act(Session &sess) {
 
 }
+
+std::string PrintActionsLog::toString() const {
+    return std::__cxx11::string();
+}
+
+
+
+DeleteUser::DeleteUser(): BaseAction (){}
+
+void DeleteUser::act(Session &sess) {
+    if (sess.getCounter()==2&&sess.getInput2()!="default")
+    {
+        if(sess.getActiveUser()->getName()==sess.getInput2())
+            sess.setActiveUser((sess.getUserMap()->find("default"))->second);
+        if(sess.containsUser(sess.getInput2())) {
+            sess.getUserMap()->erase(sess.getInput2());
+            complete();
+        }
+        else error("User not found");
+
+    }
+    else error("Incorrect command");
+
+}
+
+
+
+
+DuplicateUser::DuplicateUser() : BaseAction (){}
+
+void DuplicateUser::act(Session &sess) {
+
+}
+
+
+
+PrintWatchHistory::PrintWatchHistory() : BaseAction (){}
+
+void PrintWatchHistory::act(Session &sess) {
+
+}
+
+
+
+
+PrintContentList::PrintContentList() : BaseAction (){}
+
+void PrintContentList::act(Session &sess) {
+
+}
+
+
+
+
+Exit::Exit() : BaseAction (){}
+
+void Exit::act(Session &sess) {
+
+}
+
+std::string Exit::toString() const {
+    return std::__cxx11::string();
+}
+
+
+

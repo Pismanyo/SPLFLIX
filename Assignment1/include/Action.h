@@ -43,6 +43,7 @@ public:
 
 class DeleteUser : public BaseAction {
 public:
+    DeleteUser();
 	virtual void act(Session & sess);
 	virtual std::string toString() const;
 };
@@ -50,18 +51,21 @@ public:
 
 class DuplicateUser : public BaseAction {
 public:
+    DuplicateUser();
 	virtual void act(Session & sess);
 	virtual std::string toString() const;
 };
 
 class PrintContentList : public BaseAction {
 public:
+    PrintContentList();
 	virtual void act (Session& sess);
 	virtual std::string toString() const;
 };
 
 class PrintWatchHistory : public BaseAction {
 public:
+    PrintWatchHistory();
 	virtual void act (Session& sess);
 	virtual std::string toString() const;
 };
@@ -69,6 +73,7 @@ public:
 
 class Watch : public BaseAction {
 public:
+    Watch();
 	virtual void act(Session& sess);
 	virtual std::string toString() const;
 };
@@ -76,12 +81,15 @@ public:
 
 class PrintActionsLog : public BaseAction {
 public:
+    PrintActionsLog();
+
 	virtual void act(Session& sess);
 	virtual std::string toString() const;
 };
 
 class Exit : public BaseAction {
 public:
+    Exit();
 	virtual void act(Session& sess);
 	virtual std::string toString() const;
 };
