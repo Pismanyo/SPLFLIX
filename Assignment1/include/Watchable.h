@@ -26,7 +26,7 @@ private:
 class Movie : public Watchable{
 public:
     Movie(long id, const std::string& name, int length, const std::vector<std::string>& tags);
-    virtual std::string toString() const;
+    virtual std::string toString() const; // differnet from header given?
     virtual Watchable* getNextWatchable(Session&) const;
 private:
     std::string name;
@@ -39,12 +39,15 @@ public:
             int length, int season, int episode, const std::vector<std::string> &tags);
     virtual std::string toString() const;
     std::string toString2 ();
+    virtual std::string toStringNextSesson() const ;
+    virtual std::string toStringNextEpsoide() const ;
     virtual Watchable* getNextWatchable(Session&) const;
 private:
     std::string seriesName;
     int season;
     int episode;
     long nextEpisodeId;
+
 };
 
 #endif

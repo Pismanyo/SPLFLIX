@@ -20,11 +20,17 @@ std::vector<Watchable *> User::get_history() const {
     return history;
 }
 RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
+    Reruns=0;
 
 }
 
 Watchable *RerunRecommenderUser::getRecommendation(Session &s) {
-    return nullptr;
+    Watchable *cur=nullptr;
+    vector<Watchable*> his=this->get_history();
+    if(his.size()!=0)
+    Watchable *cur= his[Reruns%(his.size()-1)];
+
+    return cur;
 }
 LengthRecommenderUser::LengthRecommenderUser(const std::string &name) : User(name) {
 

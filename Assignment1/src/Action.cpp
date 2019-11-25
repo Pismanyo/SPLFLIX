@@ -7,7 +7,7 @@
 using namespace std;
 
 ActionStatus BaseAction::getStatus() const {
-    return COMPLETED;
+    return status;
 }
 
 BaseAction::BaseAction() {
@@ -17,14 +17,16 @@ BaseAction::BaseAction() {
 }
 
 std::string BaseAction::getErrorMsg() const {
-    return std::__cxx11::string();
+    return errorMsg;
 }
 
 void BaseAction::error(const std::string &errorMsg) {
-
+    this->errorMsg=(errorMsg);
+    status=ERROR;
 }
 
 void BaseAction::complete() {
+    status=COMPLETED;
 
 }
 

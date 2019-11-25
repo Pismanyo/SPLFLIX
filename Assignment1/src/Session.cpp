@@ -156,3 +156,7 @@ std::vector<BaseAction *> *Session::actionLog() {
     return &actionsLog;
 }
 
+User *Session::getActiveUser() {
+    return activeUser;
+}
+

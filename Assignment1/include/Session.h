@@ -20,6 +20,7 @@ public:
     unordered_map<string,User*> *getUserMap();
     std::vector<Watchable*> *getContent();
     std::vector<BaseAction*> *actionLog();
+    User* getActiveUser();
     int getCounter();
 private:
     std::vector<Watchable*> content;

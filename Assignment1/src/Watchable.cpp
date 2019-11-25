@@ -1,5 +1,6 @@
 #include "../include/Watchable.h"
-#include "../include/Watchable.h"
+#include "../include/Session.h"
+#include "../include/User.h"
 
 #include <utility>
 
@@ -41,6 +42,29 @@ string Episode::toString() const {
 
     return seriesName+" S"+forses;
 }
+string Episode::toStringNextEpsoide() const {
+    string forses="";
+    if (season<10)
+        forses="0"+season;
+    else
+        forses=season;
+    if(episode+1<10)
+        forses.append("E0"+(episode+1));
+    else forses.append("E"+(episode+1));
+
+    return seriesName+" S"+forses;
+}
+string Episode::toStringNextSesson() const {
+    string forses="";
+    if (season+1<10)
+        forses="0"+(season+1);
+    else
+        forses=season+1;
+     forses.append("E01");
+
+    return seriesName+" S"+forses;
+}
+
 string Episode::toString2()  {
     string forses="";
     if (season<10)
@@ -64,7 +88,19 @@ string Episode::toString2()  {
 }
 
 Watchable *Episode::getNextWatchable(Session &a) const {
-    return nullptr;
+    vector<Watchable*> *content=a.getContent();
+    for (int j=0;j<content->size();++j)
+    {
+        if ((*content)[j]->toString()==this->toStringNextEpsoide())
+            return (*content)[j];
+    }
+    for (int j=0;j<content->size();++j)
+    {
+         if((*content)[j]->toString()==this->toStringNextSesson())
+             return (*content)[j];
+    }
+
+    return (*(a.getActiveUser())).getRecommendation(a);
 };
 
 Movie::Movie(long _id, const string &_name, int _length, const std::vector<std::string> &_tags) : Watchable(_id,_length, _tags),
@@ -75,7 +111,7 @@ std::string Movie::toString() const {
 }
 
 Watchable *Movie::getNextWatchable(Session &a) const {
-    return nullptr;
+    return (*(a.getActiveUser())).getRecommendation(a);
 }
 
 
