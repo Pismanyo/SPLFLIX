@@ -8,20 +8,12 @@ using namespace std;
 
 
 User::User(const std::string &name):name(name) {}
-User::User(const User &other):name(other.name) {
-
-    history=other.history;
-    for (auto watchable: other.history)
-        watchable= nullptr;
-
-
-
-   /*
+void User::copyHistory(const User &other) {
     for (Watchable* watch: other.history)
     {
         this->history.push_back(watch->clone());
     }
-    */
+
 
 }
 
@@ -32,6 +24,11 @@ string User::getName() const {
 
 std::vector<Watchable *> User::get_history() const {
     return history;
+}
+
+void User::addHistory(Watchable *watch) {
+    history.push_back(watch);
+
 }
 
 
@@ -49,9 +46,13 @@ Watchable *RerunRecommenderUser::getRecommendation(Session &s) {
     return cur;
 }
 
-RerunRecommenderUser::RerunRecommenderUser(const RerunRecommenderUser &other) : User(other) {
-    this->Reruns=other.Reruns;
+User *RerunRecommenderUser::duplactUser(const std::string &name) const{
+    RerunRecommenderUser *user=new RerunRecommenderUser(name);
+    user->copyHistory(*this);
+    user->Reruns=this->Reruns;
+    return user;
 }
+
 
 LengthRecommenderUser::LengthRecommenderUser(const std::string &name) : User(name) {
 
@@ -115,7 +116,12 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
     return cur;
 }
 
-LengthRecommenderUser::LengthRecommenderUser(const LengthRecommenderUser &other) : User(other){}
+User *LengthRecommenderUser::duplactUser(const std::string &name) const{
+    LengthRecommenderUser *user=new LengthRecommenderUser(name);
+    user->copyHistory(*this);
+    return user;
+}
+
 
 GenreRecommenderUser::GenreRecommenderUser(const std::string &name) : User(name) {
 
@@ -125,4 +131,9 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
     return nullptr;
 }
 
-GenreRecommenderUser::GenreRecommenderUser(const GenreRecommenderUser &other) :User(other) {}
+User *GenreRecommenderUser::duplactUser(const std::string &name) const{
+    GenreRecommenderUser *user=new GenreRecommenderUser(name);
+    user->copyHistory(*this);
+    return user;
+}
+

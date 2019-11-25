@@ -148,12 +148,9 @@ void DuplicateUser::act(Session &sess) {
 
     }
 
-    User *todup=sess.getUser(sess.getInput2());
-    User dup=new auto(todup);
-
-
-
-
+    User *todup=sess.getUser(sess.getInput2())->duplactUser(sess.getInput3());
+    sess.getUserMap()->insert({todup->getName(),todup});
+    complete();
 }
 
 
