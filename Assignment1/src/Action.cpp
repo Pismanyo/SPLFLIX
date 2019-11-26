@@ -32,6 +32,9 @@ void BaseAction::complete() {
 
 }
 
+std::string BaseAction::getErrorMessage() const {
+    return this->getErrorMsg();
+}
 
 
 CreateUser::CreateUser() : BaseAction (){}
@@ -67,7 +70,7 @@ void CreateUser::act(Session &sess) {
 }
 
 std::string CreateUser::toString() const {
-    return std::__cxx11::string();
+    return "CreateUser";
 }
 
 
@@ -90,7 +93,7 @@ void ChangeActiveUser::act(Session &sess) {
 }
 
 std::string ChangeActiveUser::toString() const {
-    return std::__cxx11::string();
+    return "ChangeActiveUser";
 }
 
 
@@ -131,7 +134,7 @@ void Watch::act(Session &sess) {
 }
 
 std::string Watch::toString() const {
-    return std::__cxx11::string();
+    return "Watch";
 }
 
 
@@ -145,7 +148,7 @@ void PrintActionsLog::act(Session &sess) {
         string s = "";
         switch (a) {
             case ERROR:
-                s.append(b->toString() + " ERROR: " + b->getErrorMsg());
+                s.append(b->toString() + " ERROR: " + b->getErrorMessage());
                 break;
             case COMPLETED:
                 s.append(b->toString() + " COMPLETED");
@@ -159,7 +162,7 @@ void PrintActionsLog::act(Session &sess) {
 }
 
 std::string PrintActionsLog::toString() const {
-    return std::__cxx11::string();
+    return "PrintActionsLog";
 }
 
 
@@ -183,7 +186,7 @@ void DeleteUser::act(Session &sess) {
 }
 
 std::string DeleteUser::toString() const {
-    return std::__cxx11::string();
+    return "DeleteUser";
 }
 
 
@@ -202,7 +205,7 @@ void DuplicateUser::act(Session &sess) {
 }
 
 std::string DuplicateUser::toString() const {
-    return std::__cxx11::string();
+    return "DuplicateUser";
 }
 
 
@@ -219,7 +222,7 @@ void PrintWatchHistory::act(Session &sess) {
 }
 
 std::string PrintWatchHistory::toString() const {
-    return std::__cxx11::string();
+    return "PrintWatchHistory";
 }
 
 
@@ -240,18 +243,23 @@ void PrintContentList::act(Session &sess) {
 }
 
 std::string PrintContentList::toString() const {
-    return std::__cxx11::string();
+    return "PrintContentList";
 }
 
 
 Exit::Exit() : BaseAction (){}
 
 void Exit::act(Session &sess) {
+    if(sess.getCounter()==1) {
+        sess.setRun(false);
+        complete();
+    }
+    else error("invaild input");
 
 }
 
 std::string Exit::toString() const {
-    return std::__cxx11::string();
+    return "Exit";
 }
 
 

@@ -51,13 +51,14 @@ Session::~Session() {
 void Session::start() {
     cout<<"SPLFLIX is now on!"<<endl;
     again= false;
+    run=true;
     const string na="default";
     activeUser =new LengthRecommenderUser(na);
    // std::pair<std::string,User*> hjh("default",activeUser);
     userMap.insert({"default",activeUser});
     string answer1;
 
-    while (answer1!="exit")
+    while (run)
     {
         getline(cin,answer1);
         string word;
@@ -66,15 +67,23 @@ void Session::start() {
         while (iss >> word && counter < 4)
             inputs[counter++] = word;
 
-        if (inputs[0].compare("log") == 0) {
+        if (inputs[0].compare("content") == 0) {
+            PrintContentList *command = new PrintContentList();
+            command->act(*this);
+            actionsLog.push_back(command);
 
-        }
-        else if (inputs[0].compare("content") == 0) {
 
         }
         else if (inputs[0].compare("changeuser") == 0) {
+            ChangeActiveUser *command = new ChangeActiveUser();
+            command->act(*this);
+            actionsLog.push_back(command);
+
         }
         else if (inputs[0].compare("deleteuser") == 0) {
+            DeleteUser *command = new DeleteUser();
+            command->act(*this);
+            actionsLog.push_back(command);
         }
         else if (inputs[0].compare("watch") == 0) {
             Watch *command=new Watch;
@@ -92,12 +101,24 @@ void Session::start() {
             actionsLog.push_back(command);
         }
         else if (inputs[0].compare("dupuser") == 0) {
+            DuplicateUser *command = new DuplicateUser();
+            command->act(*this);
+            actionsLog.push_back(command);
         }
         else if (inputs[0].compare("exit") == 0) {
+            Exit *command = new Exit();
+            command->act(*this);
+            actionsLog.push_back(command);
         }
         else if (inputs[0].compare("log") == 0) {
+            PrintActionsLog *command = new PrintActionsLog();
+            command->act(*this);
+            actionsLog.push_back(command);
         }
         else if (inputs[0].compare("watchhist") == 0) {
+            PrintWatchHistory *command = new PrintWatchHistory();
+            command->act(*this);
+            actionsLog.push_back(command);
         }
      }
 }
@@ -171,5 +192,9 @@ void Session::setAgain(bool set) {
 
 bool Session::getAgain() {
     return again;
+}
+
+void Session::setRun(bool runing) {
+    run=runing;
 }
 

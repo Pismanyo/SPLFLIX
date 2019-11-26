@@ -10,10 +10,10 @@ int main(int argc, char** argv){
 		cout << "usage splflix input_file" << endl;
 		//return 0;
 	}
-	//Session s(argv[1]);
+	Session s(argv[1]);
    // Session s("/home/joni/Downloads/config1.json");
-    Session s("/home/lior/Documents/Assignment 1/config/config1.json");
-    //std::cout << "what are yiu sa"<<endl;
+    //Session s("/home/lior/Documents/Assignment 1/config/config1.json");
 	s.start();
+	//s.start();
 	return 0;
 }

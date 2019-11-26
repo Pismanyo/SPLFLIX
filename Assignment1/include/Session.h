@@ -33,6 +33,7 @@ public:
     void setAgain(bool set);
     void setRecommended( Watchable* other);
     Watchable* getRecommended();
+    void setRun(bool runing);
 
 private:
     std::vector<Watchable*> content;
@@ -42,6 +43,7 @@ private:
     string inputs[3];
     int counter;
     bool again;
+    bool run;
     Watchable* recommended;
 };
 #endif
