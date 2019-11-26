@@ -50,6 +50,7 @@ Session::~Session() {
 
 void Session::start() {
     cout<<"SPLFLIX is now on!"<<endl;
+    again= false;
     const string na="default";
     activeUser =new LengthRecommenderUser(na);
    // std::pair<std::string,User*> hjh("default",activeUser);
@@ -65,46 +66,42 @@ void Session::start() {
         while (iss >> word && counter < 4)
             inputs[counter++] = word;
 
-        switch (counter) {
-            case 1:
-                if (inputs[0].compare("log") == 0) {}
-                    //  goodinput=true;
-                else if (inputs[0].compare("content") == 0) {}
-                //  goodinput = true;
-                break;
-            case 2:
-                if (inputs[0].compare("changeuser") == 0) {}
-                    //  goodinput=true;
-                else if (inputs[0].compare("deleteuser")) {}
-                    //  goodinput=true;
-                else if (inputs[0].compare("watch") == 0) {}
-                //  goodinput=true;
-                break;
-            case 3:
-                if (inputs[0].compare("createuser") == 0) {
-                    CreateUser *what = new CreateUser();
-                    what->act(*this);
-                    // goodinput=true;
-                } else if (inputs[0].compare("dupuser") == 0) {}
-                //  goodinput=true;
-                break;
+        if (inputs[0].compare("log") == 0) {
+
         }
+        else if (inputs[0].compare("content") == 0) {
 
-       // if(!goodinput) {
-        //    cout << "bad input, try again" << endl;
         }
-    }
-   // exit();
+        else if (inputs[0].compare("changeuser") == 0) {
+        }
+        else if (inputs[0].compare("deleteuser") == 0) {
+        }
+        else if (inputs[0].compare("watch") == 0) {
+            Watch *command=new Watch;
+            command->act(*this);
+            while(again)
+            {
+                Watch *WatchRecommanded=new Watch;
+                WatchRecommanded->act(*this);
 
-
-void Session::exit() {
-    //delete users
-    cout<<"Press any button to start SPLFLIX"<<endl;
-    string ans;
-    cin>>ans;
-    this->start();
-
+            }
+        }
+        else if (inputs[0].compare("createuser") == 0) {
+            CreateUser *command = new CreateUser();
+            command->act(*this);
+            actionsLog.push_back(command);
+        }
+        else if (inputs[0].compare("dupuser") == 0) {
+        }
+        else if (inputs[0].compare("exit") == 0) {
+        }
+        else if (inputs[0].compare("log") == 0) {
+        }
+        else if (inputs[0].compare("watchhist") == 0) {
+        }
+     }
 }
+
 
 string Session::getInput2() {
     return inputs[1];
@@ -146,3 +143,33 @@ User* Session::getUser(std::string name) {
 
     return userMap.find(name)->second;
 }
+
+void Session::setinput(std::string action) {
+    inputs[1]=action;
+
+}
+
+bool Session::is_number(const std::string &s) {
+    return !s.empty() && std::find_if(s.begin(),
+                                      s.end(), [](char c) { return !std::isdigit(c); }) == s.end();
+}
+
+
+void Session::setRecommended(Watchable *other) {
+    recommended=other;
+
+}
+
+Watchable *Session::getRecommended() {
+    return recommended;
+}
+
+void Session::setAgain(bool set) {
+    again=set;
+
+}
+
+bool Session::getAgain() {
+    return again;
+}
+

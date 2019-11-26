@@ -23,7 +23,7 @@ std::string BaseAction::getErrorMsg() const {
 void BaseAction::error(const std::string &errorMsg) {
     this->errorMsg=(errorMsg);
     status=ERROR;
-    cout<<errorMsg<<endl;
+    //cout<<errorMsg<<endl;
 }
 
 void BaseAction::complete() {
@@ -34,9 +34,7 @@ void BaseAction::complete() {
 
 
 
-CreateUser::CreateUser() : BaseAction (){
-
-}
+CreateUser::CreateUser() : BaseAction (){}
 
 void CreateUser::act(Session &sess) {
     string input2 = sess.getInput2();
@@ -46,18 +44,19 @@ void CreateUser::act(Session &sess) {
         if (input3 == "len") {
             LengthRecommenderUser *cur = new LengthRecommenderUser(input2);
             sess.getUserMap()->insert({input2, cur});
-            works = true;
+            complete();
         }
         if (input3 == "rer") {
             RerunRecommenderUser *cur = new RerunRecommenderUser(input2);
             sess.getUserMap()->insert({input2, cur});
-            works = true;
+            complete();
         }
         if (input3 == "gen") {
             GenreRecommenderUser *cur = new GenreRecommenderUser(input2);
             sess.getUserMap()->insert({input2, cur});
-            works = true;
+            complete();
         }
+        else error("Incorrect input");
 
     }
     if (works)
@@ -90,12 +89,44 @@ void ChangeActiveUser::act(Session &sess) {
 
 }
 
-
+std::string ChangeActiveUser::toString() const {
+    return std::__cxx11::string();
+}
 
 
 Watch::Watch() : BaseAction (){}
 
 void Watch::act(Session &sess) {
+    Watchable* watch= nullptr;
+    if (!sess.getAgain())
+    {
+        if (sess.getCounter()!=2||!sess.is_number(sess.getInput2()))
+        {
+            int id=stoi(sess.getInput2());
+            bool found=false;
+            for(std::vector<Watchable*>::iterator it = sess.getContent()->begin(); it != sess.getContent()->end()|found; ++it) {
+                if ((*it)->getId() == id) {
+                    Watchable* watch=(*it);
+                }
+            }
+
+        }
+    }
+    else {
+        watch=sess.getRecommended();
+    }
+    cout << "Watching " + watch->toString() << endl;
+    sess.getActiveUser()->addHistory(watch);
+    complete();
+    sess.setRecommended((watch)->getNextWatchable(sess));
+    cout<<"We recommend watching "+sess.getRecommended()->toString()+", continue watching? [y/n]"<<endl;
+    string anwer;
+    getline(cin,anwer);
+    if (anwer=="y") {
+        sess.setAgain(true);
+    }
+    else
+        sess.setAgain(false);
 
 }
 
@@ -108,7 +139,23 @@ std::string Watch::toString() const {
 PrintActionsLog::PrintActionsLog() : BaseAction (){}
 
 void PrintActionsLog::act(Session &sess) {
-
+    std::vector<BaseAction *> *actionsLog = sess.getActionsLog();
+    for (BaseAction *b: *actionsLog) {
+        ActionStatus a = b->getStatus();
+        string s = "";
+        switch (a) {
+            case ERROR:
+                s.append(b->toString() + " ERROR: " + b->getErrorMsg());
+                break;
+            case COMPLETED:
+                s.append(b->toString() + " COMPLETED");
+                break;
+            case PENDING:
+                s.append(b->toString() + " PENDING");
+                break;
+        }
+        cout << s << endl;
+    }
 }
 
 std::string PrintActionsLog::toString() const {
@@ -135,7 +182,9 @@ void DeleteUser::act(Session &sess) {
 
 }
 
-
+std::string DeleteUser::toString() const {
+    return std::__cxx11::string();
+}
 
 
 DuplicateUser::DuplicateUser() : BaseAction (){}
@@ -152,6 +201,9 @@ void DuplicateUser::act(Session &sess) {
     complete();
 }
 
+std::string DuplicateUser::toString() const {
+    return std::__cxx11::string();
+}
 
 
 PrintWatchHistory::PrintWatchHistory() : BaseAction (){}
@@ -166,7 +218,9 @@ void PrintWatchHistory::act(Session &sess) {
     cout << str << endl;
 }
 
-
+std::string PrintWatchHistory::toString() const {
+    return std::__cxx11::string();
+}
 
 
 PrintContentList::PrintContentList() : BaseAction (){}
@@ -185,7 +239,9 @@ void PrintContentList::act(Session &sess) {
     }
 }
 
-
+std::string PrintContentList::toString() const {
+    return std::__cxx11::string();
+}
 
 
 Exit::Exit() : BaseAction (){}

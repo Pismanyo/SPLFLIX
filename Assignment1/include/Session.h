@@ -22,9 +22,17 @@ public:
     std::vector<BaseAction*> *actionLog();
     User* getActiveUser();
     int getCounter();
+    std::vector<BaseAction*> * getActionsLog();
     void setActiveUser(User *Active);
+    void setActionsLog(BaseAction*);
     bool containsUser(std::string);
     User* getUser(std::string);
+    void setinput(std::string);
+    bool is_number(const std::string& s);
+    bool getAgain();
+    void setAgain(bool set);
+    void setRecommended( Watchable* other);
+    Watchable* getRecommended();
 
 private:
     std::vector<Watchable*> content;
@@ -33,5 +41,7 @@ private:
     User* activeUser;
     string inputs[3];
     int counter;
+    bool again;
+    Watchable* recommended;
 };
 #endif
