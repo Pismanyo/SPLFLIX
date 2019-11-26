@@ -28,8 +28,6 @@ void BaseAction::error(const std::string &errorMsg) {
 
 void BaseAction::complete() {
     status = COMPLETED;
-
-
 }
 
 
@@ -68,7 +66,7 @@ void CreateUser::act(Session &sess) {
 }
 
 std::string CreateUser::toString() const {
-    return std::__cxx11::string();
+    return "CreateUser";
 }
 
 
@@ -100,7 +98,7 @@ void Watch::act(Session &sess) {
 }
 
 std::string Watch::toString() const {
-    return std::__cxx11::string();
+    return "Watch";
 }
 
 
@@ -108,11 +106,27 @@ std::string Watch::toString() const {
 PrintActionsLog::PrintActionsLog() : BaseAction (){}
 
 void PrintActionsLog::act(Session &sess) {
-
+    *actionsLog = sess.getActionsLog();
+    for (BaseAction *b: *actionsLog) {
+        ActionStatus a = b->getStatus();
+        string s = "";
+        switch (a) {
+            case ERROR:
+                s.append(b->toString() + " ERROR: " + b->getErrorMsg());
+                break;
+            case COMPLETED:
+                s.append(b->toString() + " COMPLETED");
+                break;
+            case PENDING:
+                s.append(b->toString() + " PENDING");
+                break;
+        }
+        cout << s << endl;
+    }
 }
 
 std::string PrintActionsLog::toString() const {
-    return std::__cxx11::string();
+    return "PrintActionLog";
 }
 
 
@@ -164,6 +178,7 @@ void PrintWatchHistory::act(Session &sess) {
         str.append(w->getId() + " " + w->toString() + '\n');
     }
     cout << str << endl;
+
 }
 
 
@@ -195,7 +210,7 @@ void Exit::act(Session &sess) {
 }
 
 std::string Exit::toString() const {
-    return std::__cxx11::string();
+    return "Exit";
 }
 
 

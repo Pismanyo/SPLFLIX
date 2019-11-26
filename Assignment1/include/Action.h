@@ -82,8 +82,9 @@ public:
 class PrintActionsLog : public BaseAction {
 public:
     PrintActionsLog();
-
-	virtual void act(Session& sess);
+private:
+    std::vector<BaseAction*> actionsLog;
+    virtual void act(Session& sess);
 	virtual std::string toString() const;
 };
 

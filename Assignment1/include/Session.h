@@ -19,10 +19,11 @@ public:
     string getInput3();
     unordered_map<string,User*> *getUserMap();
     std::vector<Watchable*> *getContent();
-    std::vector<BaseAction*> *actionLog();
+    std::vector<BaseAction*> * getActionsLog();
     User* getActiveUser();
     int getCounter();
     void setActiveUser(User *Active);
+    void setActionsLog(BaseAction*);
     bool containsUser(std::string);
     User* getUser(std::string);
 
