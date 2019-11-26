@@ -146,14 +146,19 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
                     recTag = s;
         }
     }
-    
+    bool f=true;
     for(Watchable* w: *content) {
         std::vector<std::string> str = w->getTags();
         for (string s: str)
             if (s.compare(recTag) == 0)
-                cur = w;
+                for (Watchable *w2: his)
+                    if (w2->getId() == w->getId())
+                        f = false;
+        if (f) {
+            cur = w;
+            break;
+        }
     }
-
     return cur;
 }
 
