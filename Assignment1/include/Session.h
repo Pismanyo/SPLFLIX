@@ -31,8 +31,7 @@ private:
     std::vector<BaseAction*> actionsLog;
     std::unordered_map<std::string,User*> userMap;
     User* activeUser;
-    std::string input2;
-    std:: string input3;
+    string inputs[3];
     int counter;
 };
 #endif

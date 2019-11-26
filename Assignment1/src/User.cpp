@@ -59,60 +59,45 @@ LengthRecommenderUser::LengthRecommenderUser(const std::string &name) : User(nam
 }
 
 Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
-    vector<Watchable*> *content=s.getContent();
-    vector<Watchable*> his=this->get_history();
-    int sum=0;
-    for (int i=0;i<his.size();++i)
-    {
-       sum+= his[i]->getLength();
+    vector<Watchable *> *content = s.getContent();
+    vector<Watchable *> his = this->get_history();
+    Watchable *cur = nullptr;
+    int sum = 0;
+    for (Watchable *w : his)
+        sum += w->getLength();
 
+    float average = sum / his.size();
+    float closest = -1;
+
+    for (Watchable *c : *content) {
+        if (closest == -1) {
+            bool contains = false;
+            for (Watchable *w : his) {
+                if (w->getId() == c->getId())
+                    contains = true;
+                if (!contains) {
+                    cur = c;
+                    closest = abs(cur->getLength() - average);
+                }
+            }
+        } else {
+            if (closest > abs(c->getLength() - average)) {
+                bool contains = false;
+                for (Watchable *w : his) {
+                    if (w->getId() == c->getId())
+                        contains = true;
+                    if (!contains) {
+                        cur = c;
+                        closest = abs(cur->getLength() - average);
+                    }
+
+                }
+
+            }
+
+        }
     }
-    float average=sum/his.size();
-
-    Watchable *cur= nullptr;
-    float closest=-1;
-
-   for (int j=0;j<content->size();++j)
-   {
-       if(closest==-1) {
-
-           bool contians = false;
-           for (int i = 0; i < his.size(); ++i) {
-               if (his[i]->getId() == (*content)[j]->getId()) {
-                   contians = true;
-               }
-               if(!contians)
-               {
-                   cur=(*content)[j];
-                   closest=abs((*cur).getLength()-average);
-               }
-           }
-       }
-       else{
-           if(closest>abs((*content)[j]->getLength()-average))
-           {
-               bool contians = false;
-               for (int i = 0; i < his.size(); ++i)
-               {
-                   if (his[i]->getId() == (*content)[j]->getId()) {
-                       contians = true;
-                   }
-                   if(!contians)
-                   {
-                       cur=(*content)[j];
-                       closest=abs((*cur).getLength()-average);
-                   }
-
-               }
-
-           }
-
-       }
-   }
-   //if (closest==-1) //then all the epsoides and movies have been played already
-
-
-
+    //if (closest==-1) //then all the epsoides and movies have been played already
     return cur;
 }
 
@@ -122,18 +107,55 @@ User *LengthRecommenderUser::duplactUser(const std::string &name) const{
     return user;
 }
 
+User *GenreRecommenderUser::duplactUser(const std::string &name) const{
+    GenreRecommenderUser *user=new GenreRecommenderUser(name);
+    user->copyHistory(*this);
+    return user;
+}
 
 GenreRecommenderUser::GenreRecommenderUser(const std::string &name) : User(name) {
 
 }
 
 Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
-    return nullptr;
+    Watchable* cur = nullptr;
+    vector<Watchable*> *content=s.getContent();
+    vector<Watchable*> his=this->get_history();
+    std::unordered_map<std::string,int> genreMap;
+    string recTag;
+    int tagCount=0;
+    
+    for(Watchable* w: his){
+        std::vector<std::string> str = w->getTags();
+        for(string s: str){
+            if(!genreMap.at(s))
+                genreMap.insert({s,1});
+            else
+                genreMap.at(s)++;
+        }
+    }
+    
+    for(Watchable* w: his){
+        std::vector<std::string> str = w->getTags();
+        for(string s: str) {
+            if (genreMap.at(s) > tagCount) {
+                tagCount = genreMap.at(s);
+                recTag = s;
+            } else if (genreMap.at(s) == tagCount)
+                if (s.compare(recTag) == -1)
+                    recTag = s;
+        }
+    }
+    
+    for(Watchable* w: *content) {
+        std::vector<std::string> str = w->getTags();
+        for (string s: str)
+            if (s.compare(recTag) == 0)
+                cur = w;
+    }
+
+    return cur;
 }
 
-User *GenreRecommenderUser::duplactUser(const std::string &name) const{
-    GenreRecommenderUser *user=new GenreRecommenderUser(name);
-    user->copyHistory(*this);
-    return user;
-}
+
 

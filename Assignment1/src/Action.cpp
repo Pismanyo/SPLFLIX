@@ -3,6 +3,7 @@
 #include "../include/Action.h"
 #include "../include/Session.h"
 #include "../include/User.h"
+#include "../include/Watchable.h"
 
 using namespace std;
 
@@ -26,7 +27,7 @@ void BaseAction::error(const std::string &errorMsg) {
 }
 
 void BaseAction::complete() {
-    status=COMPLETED;
+    status = COMPLETED;
 
 
 }
@@ -37,35 +38,34 @@ CreateUser::CreateUser() : BaseAction (){
 
 }
 
-void CreateUser::act(Session &sess)
-    {
-        string input2=sess.getInput2();
-        string input3=sess.getInput3();
-        bool works= false;
-        if(sess.getCounter()==3&&sess.getUserMap()->find(input2)==sess.getUserMap()->end())
-       {
-           if (input3 == "len") {
-               LengthRecommenderUser *cur = new LengthRecommenderUser(input2);
-               sess.getUserMap()->insert({input2, cur});
-               works=true;
-           }
-           if (input3 == "rer") {
-               RerunRecommenderUser *cur = new RerunRecommenderUser(input2);
-               sess.getUserMap()->insert({input2, cur});
-               works=true;
-           } if (input3 == "gen") {
-               GenreRecommenderUser *cur = new GenreRecommenderUser(input2);
-               sess.getUserMap()->insert({input2, cur});
-               works=true;
-           }
+void CreateUser::act(Session &sess) {
+    string input2 = sess.getInput2();
+    string input3 = sess.getInput3();
+    bool works = false;
+    if (sess.getCounter() == 3 && sess.getUserMap()->find(input2) == sess.getUserMap()->end()) {
+        if (input3 == "len") {
+            LengthRecommenderUser *cur = new LengthRecommenderUser(input2);
+            sess.getUserMap()->insert({input2, cur});
+            works = true;
+        }
+        if (input3 == "rer") {
+            RerunRecommenderUser *cur = new RerunRecommenderUser(input2);
+            sess.getUserMap()->insert({input2, cur});
+            works = true;
+        }
+        if (input3 == "gen") {
+            GenreRecommenderUser *cur = new GenreRecommenderUser(input2);
+            sess.getUserMap()->insert({input2, cur});
+            works = true;
+        }
 
-       }
-          if(works)
-              complete();
-          else {
-              //error
-          }
     }
+    if (works)
+        complete();
+    else {
+        //error
+    }
+}
 
 std::string CreateUser::toString() const {
     return std::__cxx11::string();
@@ -76,7 +76,7 @@ std::string CreateUser::toString() const {
 ChangeActiveUser::ChangeActiveUser() : BaseAction (){}
 
 void ChangeActiveUser::act(Session &sess) {
-    if (sess.getCounter()==2) {
+    if (sess.getCounter() == 2) {
         unordered_map<string, User *> *userList = sess.getUserMap();
         unordered_map<string, User *>::const_iterator got = userList->find(sess.getInput2());
         if (sess.getCounter() != 2 | got == userList->end())
@@ -85,8 +85,7 @@ void ChangeActiveUser::act(Session &sess) {
             sess.setActiveUser(got->second);
             complete();
         }
-    }
-    else error("Incorrect command");
+    } else error("Incorrect command");
 
 
 }
@@ -158,7 +157,13 @@ void DuplicateUser::act(Session &sess) {
 PrintWatchHistory::PrintWatchHistory() : BaseAction (){}
 
 void PrintWatchHistory::act(Session &sess) {
-
+    vector<Watchable *> history = sess.getActiveUser()->get_history();
+    string str = "Watch history for ";
+    str.append(sess.getActiveUser()->getName() + '\n');
+    for (Watchable *w : history) {
+        str.append(w->getId() + " " + w->toString() + '\n');
+    }
+    cout << str << endl;
 }
 
 
@@ -167,7 +172,17 @@ void PrintWatchHistory::act(Session &sess) {
 PrintContentList::PrintContentList() : BaseAction (){}
 
 void PrintContentList::act(Session &sess) {
-
+    vector<Watchable *> *content = sess.getContent();
+    for (Watchable *w : *content) {
+        string s = "[";
+        string str = w->getId() + " " + w->toString() + " ";
+        vector<string> tags = w->getTags();
+        for (int i = 0; i < tags.size(); ++i)
+            if (i != 0)
+                s.append("," + tags[i]);
+        s.append("]");
+        cout << str + to_string(w->getLength()) + s << endl;
+    }
 }
 
 

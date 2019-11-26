@@ -55,66 +55,39 @@ void Session::start() {
    // std::pair<std::string,User*> hjh("default",activeUser);
     userMap.insert({"default",activeUser});
     string answer1;
-    string input1;
+
     while (answer1!="exit")
     {
         getline(cin,answer1);
         string word;
         counter=0;
         stringstream iss(answer1);
-        while (iss >> word&&counter<4)
-        {
-            if(counter==0)
-                input1=word;
-            if(counter==1)
-                input2=word;
-            if(counter==2)
-                input3=word;
-            counter++;
-        }
-        if(counter==1)
-        {
-            if (input1 == "log")
-            {
-              //  goodinput=true;
+        while (iss >> word && counter < 4)
+            inputs[counter++] = word;
 
-            }
-            if("content"==input1) {
-              //  goodinput = true;
-            }
-        }
-        if(counter=2)
-        {
-            if (input1 == "changeUser")
-            {
-               // goodinput=true;
-
-
-            }
-            if("deleteuser"==input1)
-            {
-            //    goodinput=true;
-            }
-            if("watch"==input1)
-            {
-               // goodinput=true;
-            }
-
-        }
-        if(counter=3)
-        {
-            if (input1 == "createuser")
-            {
-                CreateUser *what =new CreateUser();
-                what->act(*this);
-               // goodinput=true;
-
-            }
-            if("dupuser"==input1)
-            {
-              //  goodinput=true;
-            }
-
+        switch (counter) {
+            case 1:
+                if (inputs[0].compare("log") == 0) {}
+                    //  goodinput=true;
+                else if (inputs[0].compare("content") == 0) {}
+                //  goodinput = true;
+                break;
+            case 2:
+                if (inputs[0].compare("changeuser") == 0) {}
+                    //  goodinput=true;
+                else if (inputs[0].compare("deleteuser")) {}
+                    //  goodinput=true;
+                else if (inputs[0].compare("watch") == 0) {}
+                //  goodinput=true;
+                break;
+            case 3:
+                if (inputs[0].compare("createuser") == 0) {
+                    CreateUser *what = new CreateUser();
+                    what->act(*this);
+                    // goodinput=true;
+                } else if (inputs[0].compare("dupuser") == 0) {}
+                //  goodinput=true;
+                break;
         }
 
        // if(!goodinput) {
@@ -134,10 +107,10 @@ void Session::exit() {
 }
 
 string Session::getInput2() {
-    return input2;
+    return inputs[1];
 }
 string Session::getInput3() {
-    return input3;
+    return inputs[2];
 }
 
 unordered_map<string, User*> *Session::getUserMap() {
@@ -173,6 +146,3 @@ User* Session::getUser(std::string name) {
 
     return userMap.find(name)->second;
 }
-
-
-
