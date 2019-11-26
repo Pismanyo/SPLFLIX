@@ -19,7 +19,7 @@ public:
     string getInput3();
     unordered_map<string,User*> *getUserMap();
     std::vector<Watchable*> *getContent();
-    std::vector<BaseAction*> *actionLog();
+    std::vector<BaseAction*> * getActionsLog();
     User* getActiveUser();
     int getCounter();
     std::vector<BaseAction*> * getActionsLog();
