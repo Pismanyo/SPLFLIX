@@ -46,21 +46,21 @@ string Episode::toString() const {
 string Episode::toStringNextEpsoide() const {
     string forses="";
     if (season<10)
-        forses="0"+season;
+        forses.append("0"+to_string(season));
     else
-        forses=season;
-    if(episode+1<10)
-        forses.append("E0"+(episode+1));
-    else forses.append("E"+(episode+1));
+        forses.append(to_string(season));
+    if((episode+1)<10)
+        forses.append("E0"+to_string(episode+1));
+    else forses.append("E"+to_string(episode+1));
 
     return seriesName+" S"+forses;
 }
 string Episode::toStringNextSesson() const {
     string forses="";
     if (season+1<10)
-        forses="0"+(season+1);
+        forses.append("0"+to_string(season+1));
     else
-        forses=season+1;
+        forses.append(to_string(season+1));
      forses.append("E01");
 
     return seriesName+" S"+forses;
