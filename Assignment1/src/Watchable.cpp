@@ -21,9 +21,6 @@ int Watchable::getLength() const  {
     return length;
 }
 
-Watchable *Watchable::clone() {
-    return nullptr;
-}
 
 
 Watchable::~Watchable() = default;
@@ -37,12 +34,12 @@ Episode::Episode( long _id, const string &_seriesName,
 string Episode::toString() const {
     string forses="";
     if (season<10)
-        forses="0"+season;
+        forses.append("0"+to_string(season));
     else
-        forses=season;
+        forses.append(to_string(season));
     if(episode<10)
-        forses.append("E0"+episode);
-    else forses.append("E"+episode);
+        forses.append("E0"+to_string(episode));
+    else forses.append("E"+to_string(episode));
 
     return seriesName+" S"+forses;
 }
@@ -72,18 +69,18 @@ string Episode::toStringNextSesson() const {
 string Episode::toString2()  {
     string forses="";
     if (season<10)
-        forses="0"+season;
+        forses.append("0"+to_string(season));
     else
-        forses=season;
+        forses.append(to_string(season));
     if(episode<10)
-        forses.append("E0"+episode);
-    else forses.append("E"+episode);
+        forses.append("E0"+to_string(episode));
+    else forses.append("E"+to_string(episode));
     vector<string> a=getTags();
     string genres="";
     for (int  i =0; i <a.size(); ++i) {
         if (i != 0)
-            genres += ", ";
-        genres+=a[i] ;
+            genres.append(", ");
+        genres.append(a[i]);
     }
 
 

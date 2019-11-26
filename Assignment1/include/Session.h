@@ -14,7 +14,6 @@ public:
     Session(const std::string &configFilePath);
     ~Session();
     void start();
-    void exit();
     string getInput2();
     string getInput3();
     unordered_map<string,User*> *getUserMap();
@@ -22,12 +21,9 @@ public:
     std::vector<BaseAction*> * getActionsLog();
     User* getActiveUser();
     int getCounter();
-    std::vector<BaseAction*> * getActionsLog();
     void setActiveUser(User *Active);
-    void setActionsLog(BaseAction*);
     bool containsUser(std::string);
     User* getUser(std::string);
-    void setinput(std::string);
     bool is_number(const std::string& s);
     bool getAgain();
     void setAgain(bool set);

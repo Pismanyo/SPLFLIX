@@ -14,7 +14,7 @@ Session::Session(const std::string &configFilePath) {
     fstream file(configFilePath);
     json why=json::parse(file);
     json  mov=why["movies"];
-    int id=0;
+    int id=1;
     for(auto &run :mov.items())
     {
         json into=run.value();
@@ -143,7 +143,7 @@ std::vector<Watchable *> *Session::getContent() {
     return &content;
 }
 
-std::vector<BaseAction *> *Session::actionLog() {
+std::vector<BaseAction *> *Session::getActionsLog() {
     return &actionsLog;
 }
 
@@ -165,10 +165,10 @@ User* Session::getUser(std::string name) {
     return userMap.find(name)->second;
 }
 
-void Session::setinput(std::string action) {
-    inputs[1]=action;
-
-}
+//void Session::setinput(std::string action) {
+//    inputs[1]=action;
+//
+//}
 
 bool Session::is_number(const std::string &s) {
     return !s.empty() && std::find_if(s.begin(),

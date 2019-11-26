@@ -42,19 +42,18 @@ CreateUser::CreateUser() : BaseAction (){}
 void CreateUser::act(Session &sess) {
     string input2 = sess.getInput2();
     string input3 = sess.getInput3();
-    bool works = false;
     if (sess.getCounter() == 3 && sess.getUserMap()->find(input2) == sess.getUserMap()->end()) {
         if (input3 == "len") {
             LengthRecommenderUser *cur = new LengthRecommenderUser(input2);
             sess.getUserMap()->insert({input2, cur});
             complete();
         }
-        if (input3 == "rer") {
+       else  if (input3 == "rer") {
             RerunRecommenderUser *cur = new RerunRecommenderUser(input2);
             sess.getUserMap()->insert({input2, cur});
             complete();
         }
-        if (input3 == "gen") {
+        else if (input3 == "gen") {
             GenreRecommenderUser *cur = new GenreRecommenderUser(input2);
             sess.getUserMap()->insert({input2, cur});
             complete();
@@ -62,11 +61,8 @@ void CreateUser::act(Session &sess) {
         else error("Incorrect input");
 
     }
-    if (works)
-        complete();
-    else {
-        //error
-    }
+    else error("Incorrect input");
+
 }
 
 std::string CreateUser::toString() const {
@@ -101,35 +97,43 @@ Watch::Watch() : BaseAction (){}
 
 void Watch::act(Session &sess) {
     Watchable* watch= nullptr;
+    bool errorfound=false;
     if (!sess.getAgain())
     {
-        if (sess.getCounter()!=2||!sess.is_number(sess.getInput2()))
+        if (sess.getCounter()==2&sess.is_number(sess.getInput2()))
         {
             int id=stoi(sess.getInput2());
             bool found=false;
-            for(std::vector<Watchable*>::iterator it = sess.getContent()->begin(); it != sess.getContent()->end()|found; ++it) {
+            for(auto it = sess.getContent()->begin(); it != sess.getContent()->end()|found; ++it) {
                 if ((*it)->getId() == id) {
-                    Watchable* watch=(*it);
+                    watch=(*it);
                 }
             }
+
+        }
+        else
+        {
+            error("Invalid input");
+            errorfound=true;
 
         }
     }
     else {
         watch=sess.getRecommended();
     }
-    cout << "Watching " + watch->toString() << endl;
-    sess.getActiveUser()->addHistory(watch);
-    complete();
-    sess.setRecommended((watch)->getNextWatchable(sess));
-    cout<<"We recommend watching "+sess.getRecommended()->toString()+", continue watching? [y/n]"<<endl;
-    string anwer;
-    getline(cin,anwer);
-    if (anwer=="y") {
-        sess.setAgain(true);
+    if(!errorfound) {
+        cout << "Watching " + watch->toString() << endl;
+        sess.getActiveUser()->addHistory(watch);
+        complete();
+        sess.setRecommended((watch)->getNextWatchable(sess));
+        cout << "We recommend watching " + sess.getRecommended()->toString() + ", continue watching? [y/n]" << endl;
+        string anwer;
+        getline(cin, anwer);
+        if (anwer == "y") {
+            sess.setAgain(true);
+        } else
+            sess.setAgain(false);
     }
-    else
-        sess.setAgain(false);
 
 }
 
@@ -142,22 +146,31 @@ std::string Watch::toString() const {
 PrintActionsLog::PrintActionsLog() : BaseAction (){}
 
 void PrintActionsLog::act(Session &sess) {
-    std::vector<BaseAction *> *actionsLog = sess.getActionsLog();
-    for (BaseAction *b: *actionsLog) {
-        ActionStatus a = b->getStatus();
-        string s = "";
-        switch (a) {
-            case ERROR:
-                s.append(b->toString() + " ERROR: " + b->getErrorMessage());
-                break;
-            case COMPLETED:
-                s.append(b->toString() + " COMPLETED");
-                break;
-            case PENDING:
-                s.append(b->toString() + " PENDING");
-                break;
+    if (sess.getCounter() != 1)
+        error("Incorrect input");
+    else {
+
+        std::vector<BaseAction *> *actionsLog = sess.getActionsLog();
+        for (BaseAction *b: *actionsLog)
+        {
+            ActionStatus a = b->getStatus();
+            string s = "";
+            switch (a)
+            {
+                case ERROR:
+                    s.append(b->toString() + " ERROR: " + b->getErrorMessage());
+                    break;
+                case COMPLETED:
+                    s.append(b->toString() + " COMPLETED");
+                    break;
+                case PENDING:
+                    s.append(b->toString() + " PENDING");
+                    break;
+            }
+            cout << s << endl;
+
         }
-        cout << s << endl;
+        complete();
     }
 }
 
@@ -212,13 +225,19 @@ std::string DuplicateUser::toString() const {
 PrintWatchHistory::PrintWatchHistory() : BaseAction (){}
 
 void PrintWatchHistory::act(Session &sess) {
-    vector<Watchable *> history = sess.getActiveUser()->get_history();
-    string str = "Watch history for ";
-    str.append(sess.getActiveUser()->getName() + '\n');
-    for (Watchable *w : history) {
-        str.append(w->getId() + " " + w->toString() + '\n');
+    if(sess.getCounter()!=1)
+        error("Incorrect input");
+    else {
+        int historyID=0;
+        vector<Watchable *> history = sess.getActiveUser()->get_history();
+        string str = "Watch history for ";
+        str.append(sess.getActiveUser()->getName() + '\n');
+        for (Watchable *w : history) {
+            str.append(to_string(++historyID) + ". " + w->toString() + '\n');
+        }
+        cout << str << endl;
+        complete();
     }
-    cout << str << endl;
 }
 
 std::string PrintWatchHistory::toString() const {
@@ -229,16 +248,26 @@ std::string PrintWatchHistory::toString() const {
 PrintContentList::PrintContentList() : BaseAction (){}
 
 void PrintContentList::act(Session &sess) {
-    vector<Watchable *> *content = sess.getContent();
-    for (Watchable *w : *content) {
-        string s = "[";
-        string str = w->getId() + " " + w->toString() + " ";
-        vector<string> tags = w->getTags();
-        for (int i = 0; i < tags.size(); ++i)
-            if (i != 0)
-                s.append("," + tags[i]);
-        s.append("]");
-        cout << str + to_string(w->getLength()) + s << endl;
+    if(sess.getCounter()!=1)
+    {
+        error("Incorrect input");
+    }
+    else {
+        vector<Watchable *> *content = sess.getContent();
+        for (Watchable *w : *content) {
+            string s = "[";
+            string str = to_string(w->getId()) + ". " + w->toString() + " " + to_string(w->getLength()) + " minutes";
+            vector<string> tags = w->getTags();
+            for (int i = 0; i < tags.size(); ++i) {
+                if (i != 0)
+                    s.append(",");
+                s.append(tags[i]);
+            }
+            s.append("]");
+            str.append(+" " + s);
+            cout << str << endl;
+        }
+        complete();
     }
 }
 
