@@ -103,6 +103,7 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
             }
 
         }
+    return cur;
 
     }
     //if (closest==-1) //then all the epsoides and movies have been played already

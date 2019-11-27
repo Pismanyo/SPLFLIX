@@ -140,7 +140,6 @@ void Watch::act(Session &sess) {
     {
         cout << "Watching " + watch->toString() << endl;
         sess.getActiveUser()->addHistory(watch);
-        complete();
         sess.setRecommended((watch)->getNextWatchable(sess));
         cout << "We recommend watching " + sess.getRecommended()->toString() + ", continue watching? [y/n]" << endl;
 
