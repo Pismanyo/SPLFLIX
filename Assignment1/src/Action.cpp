@@ -97,8 +97,7 @@ Watch::Watch() : BaseAction (){}
 
 void Watch::act(Session &sess) {
     Watchable* watch= nullptr;
-    bool errorfound=false;
-    if (!sess.getAgain())
+    if (!sess.getWatching())
     {
         if (sess.getCounter()==2&sess.is_number(sess.getInput2()))
         {
@@ -107,32 +106,44 @@ void Watch::act(Session &sess) {
             for(auto it = sess.getContent()->begin(); it != sess.getContent()->end()|found; ++it) {
                 if ((*it)->getId() == id) {
                     watch=(*it);
+                    sess.setWatching(true);
+                    complete();
                 }
             }
-
         }
-        else
+        if(!sess.getWatching())
         {
             error("Invalid input");
-            errorfound=true;
-
         }
     }
     else {
         watch=sess.getRecommended();
+        string anwer;
+        getline(cin, anwer);
+        if (anwer == "y") {
+            sess.setWatching(true);
+            complete();
+        }
+        else if (anwer=="n")
+        {
+            sess.setWatching(false);
+            complete();
+        }
+        else
+        {
+            sess.setWatching(false);
+            error("Invalid input");
+        }
+
     }
-    if(!errorfound) {
+    if(sess.getWatching())
+    {
         cout << "Watching " + watch->toString() << endl;
         sess.getActiveUser()->addHistory(watch);
         complete();
         sess.setRecommended((watch)->getNextWatchable(sess));
         cout << "We recommend watching " + sess.getRecommended()->toString() + ", continue watching? [y/n]" << endl;
-        string anwer;
-        getline(cin, anwer);
-        if (anwer == "y") {
-            sess.setAgain(true);
-        } else
-            sess.setAgain(false);
+
     }
 
 }

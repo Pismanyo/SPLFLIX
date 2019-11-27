@@ -374,6 +374,22 @@ limits
 type_traits
 -
 
+/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp
+../include/Action.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Action.h
+../include/Session.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Session.h
+../include/User.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/User.h
+../include/Watchable.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
+
+/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Main.cpp
+iostream
+-
+../include/Session.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Session.h
+
 /home/lior/CLionProjects/SPLFLIX/Assignment1/src/Session.cpp
 ../include/Session.h
 /home/lior/CLionProjects/SPLFLIX/Assignment1/include/Session.h
@@ -386,5 +402,23 @@ type_traits
 fstream
 -
 sstream
+-
+
+/home/lior/CLionProjects/SPLFLIX/Assignment1/src/User.cpp
+../include/User.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/User.h
+../include/Session.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Session.h
+../include/Watchable.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
+
+/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Watchable.cpp
+../include/Watchable.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
+../include/Session.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Session.h
+../include/User.h
+/home/lior/CLionProjects/SPLFLIX/Assignment1/include/User.h
+utility
 -
 

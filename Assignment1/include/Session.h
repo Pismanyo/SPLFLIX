@@ -25,8 +25,8 @@ public:
     bool containsUser(std::string);
     User* getUser(std::string);
     bool is_number(const std::string& s);
-    bool getAgain();
-    void setAgain(bool set);
+    bool getWatching();
+    void setWatching(bool set);
     void setRecommended( Watchable* other);
     Watchable* getRecommended();
     void setRun(bool runing);
@@ -38,7 +38,7 @@ private:
     User* activeUser;
     string inputs[3];
     int counter;
-    bool again;
+    bool watching;
     bool run;
     Watchable* recommended;
 };

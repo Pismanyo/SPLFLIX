@@ -50,7 +50,7 @@ Session::~Session() {
 
 void Session::start() {
     cout<<"SPLFLIX is now on!"<<endl;
-    again= false;
+    watching= false;
     run=true;
     const string na="default";
     activeUser =new LengthRecommenderUser(na);
@@ -89,10 +89,12 @@ void Session::start() {
             Watch *command=new Watch;
             command->act(*this);
             actionsLog.push_back(command);
-            while(again)
+            while(watching)
             {
-                Watch *WatchRecommanded=new Watch;
-                WatchRecommanded->act(*this);//
+                command=new Watch;
+                command->act(*this);//
+                actionsLog.push_back(command);
+
                // delete WatchRecommanded;
                 // actionsLog.push_back(WatchRecommanded);
 
@@ -188,13 +190,13 @@ Watchable *Session::getRecommended() {
     return recommended;
 }
 
-void Session::setAgain(bool set) {
-    again=set;
+void Session::setWatching(bool set) {
+    watching=set;
 
 }
 
-bool Session::getAgain() {
-    return again;
+bool Session::getWatching() {
+    return watching;
 }
 
 void Session::setRun(bool runing) {
