@@ -88,10 +88,13 @@ void Session::start() {
         else if (inputs[0].compare("watch") == 0) {
             Watch *command=new Watch;
             command->act(*this);
+            actionsLog.push_back(command);
             while(again)
             {
                 Watch *WatchRecommanded=new Watch;
-                WatchRecommanded->act(*this);
+                WatchRecommanded->act(*this);//
+               // delete WatchRecommanded;
+                // actionsLog.push_back(WatchRecommanded);
 
             }
         }

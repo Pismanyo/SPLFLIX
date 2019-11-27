@@ -72,31 +72,33 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
     for (Watchable *c : *content) {
         if (closest == -1) {
             bool contains = false;
-            for (Watchable *w : his) {
-                if (w->getId() == c->getId())
+            for (int i=0;i<his.size()&&(!contains);++i ){
+                if (his[i]->getId() == c->getId())
                     contains = true;
-                if (!contains) {
-                    cur = c;
-                    closest = abs(cur->getLength() - average);
-                }
             }
-        } else {
+            if (!contains) {
+                cur = c;
+                closest = abs(cur->getLength() - average);
+            }
+        }
+
+        else {
             if (closest > abs(c->getLength() - average)) {
                 bool contains = false;
-                for (Watchable *w : his) {
-                    if (w->getId() == c->getId())
+                for (int i=0;i<his.size()&&(!contains);++i ){
+                    if (his[i]->getId() == c->getId())
                         contains = true;
-                    if (!contains) {
+                }
+                if (!contains) {
                         cur = c;
                         closest = abs(cur->getLength() - average);
-                    }
+                }
 
                 }
 
             }
 
         }
-    }
     //if (closest==-1) //then all the epsoides and movies have been played already
     return cur;
 }
