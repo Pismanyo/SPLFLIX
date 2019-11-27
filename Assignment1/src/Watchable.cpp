@@ -65,7 +65,7 @@ string Episode::toStringNextSesson() const {
 
     return seriesName+" S"+forses;
 }
-
+/*
 string Episode::toString2()  {
     string forses="";
     if (season<10)
@@ -87,7 +87,7 @@ string Episode::toString2()  {
     const string tostring=to_string(getId())+". "+seriesName+ " "+ forses+ " "+to_string(getLength())+" minutes ["+genres+"]";
     return tostring;
 }
-
+*/
 Watchable *Episode::getNextWatchable(Session &a) const {
     vector<Watchable*> *content=a.getContent();
     for (int j=0;j<content->size();++j)

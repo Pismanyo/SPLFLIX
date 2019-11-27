@@ -40,14 +40,11 @@ RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
 Watchable *RerunRecommenderUser::getRecommendation(Session &s) {
     Watchable *cur=nullptr;
     vector<Watchable*> his=this->get_history();
-    //cout<< 1%1<<endl;
     if(his.size()!=0)
     {
-        //cout<<(Reruns%(his.size())<<endl;
         cur= his[Reruns%(his.size())];
     }
-    // Watchable *cur= his[Reruns%(his.size()-1)];
-    //  cout<<Reruns%(his.size()-1)<<endl;
+
     Reruns++;
     return cur;
 }
@@ -98,16 +95,16 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
                 if (!contains) {
                     cur = c;
                     closest = abs(cur->getLength() - average);
+                        cur = c;
+                        closest = abs(cur->getLength() - average);
                 }
+             }
 
             }
 
         }
 
     }
-    //if (closest==-1) //then all the epsoides and movies have been played already
-    return cur;
-}
 
 User *LengthRecommenderUser::duplactUser(const std::string &name) const{
     LengthRecommenderUser *user=new LengthRecommenderUser(name);

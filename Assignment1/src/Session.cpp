@@ -94,10 +94,6 @@ void Session::start() {
                 command=new Watch;
                 command->act(*this);//
                 actionsLog.push_back(command);
-
-                // delete WatchRecommanded;
-                // actionsLog.push_back(WatchRecommanded);
-
             }
         }
         else if (inputs[0].compare("createuser") == 0) {

@@ -10,7 +10,8 @@ int main(int argc, char** argv){
 		cout << "usage splflix input_file" << endl;
 		//return 0;
 	}
-	Session s(argv[1]);
+   // cout << 0%1 << endl;
+    Session s(argv[1]);
    // Session s("/home/joni/Downloads/config1.json");
     //Session s("/home/lior/Documents/Assignment 1/config/config1.json");
 	s.start();
