@@ -40,9 +40,15 @@ RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
 Watchable *RerunRecommenderUser::getRecommendation(Session &s) {
     Watchable *cur=nullptr;
     vector<Watchable*> his=this->get_history();
+    //cout<< 1%1<<endl;
     if(his.size()!=0)
-    Watchable *cur= his[Reruns%(his.size()-1)];
-
+    {
+        //cout<<(Reruns%(his.size())<<endl;
+        cur= his[Reruns%(his.size())];
+    }
+    // Watchable *cur= his[Reruns%(his.size()-1)];
+    //  cout<<Reruns%(his.size()-1)<<endl;
+    Reruns++;
     return cur;
 }
 
@@ -72,30 +78,32 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
     for (Watchable *c : *content) {
         if (closest == -1) {
             bool contains = false;
-            for (Watchable *w : his) {
-                if (w->getId() == c->getId())
+            for (int i=0;i<his.size()&&(!contains);++i ){
+                if (his[i]->getId() == c->getId())
                     contains = true;
+            }
+            if (!contains) {
+                cur = c;
+                closest = abs(cur->getLength() - average);
+            }
+        }
+
+        else {
+            if (closest > abs(c->getLength() - average)) {
+                bool contains = false;
+                for (int i=0;i<his.size()&&(!contains);++i ){
+                    if (his[i]->getId() == c->getId())
+                        contains = true;
+                }
                 if (!contains) {
                     cur = c;
                     closest = abs(cur->getLength() - average);
-                }
-            }
-        } else {
-            if (closest > abs(c->getLength() - average)) {
-                bool contains = false;
-                for (Watchable *w : his) {
-                    if (w->getId() == c->getId())
-                        contains = true;
-                    if (!contains) {
-                        cur = c;
-                        closest = abs(cur->getLength() - average);
-                    }
-
                 }
 
             }
 
         }
+
     }
     //if (closest==-1) //then all the epsoides and movies have been played already
     return cur;
@@ -124,17 +132,17 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
     std::unordered_map<std::string,int> genreMap;
     string recTag;
     int tagCount=0;
-    
+
     for(Watchable* w: his){
         std::vector<std::string> str = w->getTags();
         for(string s: str){
-            if(!genreMap.at(s))
+            if(genreMap.count(s)==0)
                 genreMap.insert({s,1});
             else
                 genreMap.at(s)++;
         }
     }
-    
+
     for(Watchable* w: his){
         std::vector<std::string> str = w->getTags();
         for(string s: str) {
@@ -146,8 +154,9 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
                     recTag = s;
         }
     }
-    bool f=true;
+
     for(Watchable* w: *content) {
+        bool f=true;
         std::vector<std::string> str = w->getTags();
         for (string s: str)
             if (s.compare(recTag) == 0)
@@ -161,6 +170,5 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
     }
     return cur;
 }
-
 
 

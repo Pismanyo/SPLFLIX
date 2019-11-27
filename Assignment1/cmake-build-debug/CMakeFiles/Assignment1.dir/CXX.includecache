@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Action.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Action.h
 string
 -
 iostream
@@ -14,7 +14,7 @@ iostream
 vector
 -
 
-/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Session.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Session.h
 vector
 -
 unordered_map
@@ -22,9 +22,9 @@ unordered_map
 string
 -
 Action.h
-/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Action.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Action.h
 
-/home/lior/CLionProjects/SPLFLIX/Assignment1/include/User.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/User.h
 vector
 -
 string
@@ -34,19 +34,17 @@ unordered_set
 unordered_map
 -
 
-/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
 string
 -
 vector
 -
 
-/home/lior/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp
-../include/Action.h
-/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Action.h
-../include/Session.h
-/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Session.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/src/User.cpp
 ../include/User.h
-/home/lior/CLionProjects/SPLFLIX/Assignment1/include/User.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/User.h
+../include/Session.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Session.h
 ../include/Watchable.h
-/home/lior/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
 

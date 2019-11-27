@@ -27,7 +27,7 @@ private:
 class LengthRecommenderUser : public User {
 public:
     LengthRecommenderUser(const std::string& name);
-  //  LengthRecommenderUser(const LengthRecommenderUser& other);
+    //  LengthRecommenderUser(const LengthRecommenderUser& other);
     virtual User* duplactUser(const std::string& name )const ;
     virtual Watchable* getRecommendation(Session& s);
 private:
@@ -35,8 +35,8 @@ private:
 
 class RerunRecommenderUser : public User {
 public:
-   // RerunRecommenderUser(const RerunRecommenderUser& other);
-     virtual User* duplactUser(const std::string& name )const ;
+    // RerunRecommenderUser(const RerunRecommenderUser& other);
+    virtual User* duplactUser(const std::string& name )const ;
     RerunRecommenderUser(const std::string& name);
     virtual Watchable* getRecommendation(Session& s);
 private:

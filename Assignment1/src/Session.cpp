@@ -24,24 +24,24 @@ Session::Session(const std::string &configFilePath) {
 
     }
     json tv=why["tv_series"];
-        for(auto &nrun :tv.items())
+    for(auto &nrun :tv.items())
+    {
+        json into=nrun.value();
+        //cout<<into["seasons"]<<endl;
+        vector <int> sessions =into["seasons"];
+        int counter=1;
+        for (int i :sessions)
         {
-            json into=nrun.value();
-            //cout<<into["seasons"]<<endl;
-            vector <int> sessions =into["seasons"];
-            int counter=1;
-            for (int i :sessions)
-            {
-                for (int epsoidnum=1;epsoidnum<=i;++epsoidnum) {
-                  //  cout<<into["name"]<< ","<<into["length"]<< ","<<into["tags"]<<","<<endl;
-                    Episode *cur = new Episode(id, into["name"], into["episode_length"], counter,epsoidnum,into["tags"]);
+            for (int epsoidnum=1;epsoidnum<=i;++epsoidnum) {
+                //  cout<<into["name"]<< ","<<into["length"]<< ","<<into["tags"]<<","<<endl;
+                Episode *cur = new Episode(id, into["name"], into["episode_length"], counter,epsoidnum,into["tags"]);
                 //    cout<<into["name"]<< ","<<into["name"]<< ","<<into["length"]<<","<<into["length"]<<endl;
-                    content.push_back(cur);
-                    id++;
-                }
-                counter++;
+                content.push_back(cur);
+                id++;
             }
+            counter++;
         }
+    }
 
 }
 
@@ -50,11 +50,11 @@ Session::~Session() {
 
 void Session::start() {
     cout<<"SPLFLIX is now on!"<<endl;
-    again= false;
+    watching= false;
     run=true;
     const string na="default";
     activeUser =new LengthRecommenderUser(na);
-   // std::pair<std::string,User*> hjh("default",activeUser);
+    // std::pair<std::string,User*> hjh("default",activeUser);
     userMap.insert({"default",activeUser});
     string answer1;
 
@@ -88,10 +88,15 @@ void Session::start() {
         else if (inputs[0].compare("watch") == 0) {
             Watch *command=new Watch;
             command->act(*this);
-            while(again)
+            actionsLog.push_back(command);
+            while(watching)
             {
-                Watch *WatchRecommanded=new Watch;
-                WatchRecommanded->act(*this);
+                command=new Watch;
+                command->act(*this);//
+                actionsLog.push_back(command);
+
+                // delete WatchRecommanded;
+                // actionsLog.push_back(WatchRecommanded);
 
             }
         }
@@ -120,7 +125,7 @@ void Session::start() {
             command->act(*this);
             actionsLog.push_back(command);
         }
-     }
+    }
 }
 
 
@@ -185,16 +190,15 @@ Watchable *Session::getRecommended() {
     return recommended;
 }
 
-void Session::setAgain(bool set) {
-    again=set;
+void Session::setWatching(bool set) {
+    watching=set;
 
 }
 
-bool Session::getAgain() {
-    return again;
+bool Session::getWatching() {
+    return watching;
 }
 
 void Session::setRun(bool runing) {
     run=runing;
 }
-
