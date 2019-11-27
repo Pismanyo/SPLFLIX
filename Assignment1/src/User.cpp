@@ -106,6 +106,7 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
     return cur;
 
     }
+    // Comment for lior.
     //if (closest==-1) //then all the epsoides and movies have been played already
     return cur;
 }
