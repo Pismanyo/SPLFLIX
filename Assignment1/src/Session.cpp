@@ -46,6 +46,8 @@ Session::Session(const std::string &configFilePath) {
 }
 
 Session::~Session() {
+    for (BaseAction *b: actionsLog)
+        delete (b);
 }
 
 void Session::start() {
