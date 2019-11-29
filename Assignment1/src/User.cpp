@@ -1,4 +1,5 @@
 
+#include <algorithm>
 #include "../include/User.h"
 #include "../include/Session.h"
 #include "../include/Watchable.h"
@@ -13,8 +14,6 @@ void User::copyHistory(const User &other) {
     {
         this->history.push_back(watch->clone());
     }
-
-
 }
 
 
@@ -31,6 +30,18 @@ void User::addHistory(Watchable *watch) {
 
 }
 
+void User::sortVec(int left, int right, std::vector<pair<int,std::string>>& vc) {
+    std::vector<pair<int, std::string>> fixedPart;
+    for (int i = left; i <= right; ++i) {
+        fixedPart.push_back(vc.at(i));
+    }
+    reverse(fixedPart.begin(), fixedPart.end());
+
+    for (int i = left; i <= right; ++i) {
+        vc.at(i).second = fixedPart.at(i - left).second;
+    }
+}
+
 
 RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
     Reruns=0;
@@ -40,14 +51,11 @@ RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
 Watchable *RerunRecommenderUser::getRecommendation(Session &s) {
     Watchable *cur=nullptr;
     vector<Watchable*> his=this->get_history();
-    //cout<< 1%1<<endl;
     if(his.size()!=0)
     {
-        //cout<<(Reruns%(his.size())<<endl;
         cur= his[Reruns%(his.size())];
     }
-    // Watchable *cur= his[Reruns%(his.size()-1)];
-    //  cout<<Reruns%(his.size()-1)<<endl;
+
     Reruns++;
     return cur;
 }
@@ -106,8 +114,6 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
     return cur;
 
     }
-    // Comment for lior.
-    //if (closest==-1) //then all the epsoides and movies have been played already
     return cur;
 }
 
@@ -128,48 +134,74 @@ GenreRecommenderUser::GenreRecommenderUser(const std::string &name) : User(name)
 }
 
 Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
-    Watchable* cur = nullptr;
-    vector<Watchable*> *content=s.getContent();
-    vector<Watchable*> his=this->get_history();
-    std::unordered_map<std::string,int> genreMap;
-    string recTag;
-    int tagCount=0;
+    Watchable *cur = nullptr;
+    vector<Watchable *> *content = s.getContent();
+    vector<Watchable *> his = this->get_history();
+    vector<pair<int, string>> vc;
+    for (Watchable *w: his) {
+        for (string str: w->getTags()) {
+            bool tagExists = false;
+            for (int i = 0; i < vc.size(); ++i) {
+                if (vc.at(i).second.compare(str) == 0) {
+                    ++vc.at(i).first;
+                    tagExists = true;
+                }
+            }
+            if (!tagExists)
+                vc.push_back(make_pair(1, str));
+        }
+    }
+    sort(vc.begin(), vc.end());
+    reverse(vc.begin(), vc.end());
 
-    for(Watchable* w: his){
-        std::vector<std::string> str = w->getTags();
-        for(string s: str){
-            if(genreMap.count(s)==0)
-                genreMap.insert({s,1});
-            else
-                genreMap.at(s)++;
+    if (!vc.empty()) {
+        int x = vc.at(0).first;
+        string st = vc.at(0).second;
+        int count = 0;
+        for (int t = 1; t < vc.size(); ++t) {
+            if (vc.at(t).first == x)
+                ++count;
+            else {
+                if (count > 0) {
+                    sortVec(t - 1 - count, t - 1, vc);
+                }
+                x = vc.at(t).first;
+                st = vc.at(t).second;
+                count = 0;
+            }
         }
+        if(count>0)
+            sortVec(vc.size()-1-count,vc.size()-1,vc);
     }
 
-    for(Watchable* w: his){
-        std::vector<std::string> str = w->getTags();
-        for(string s: str) {
-            if (genreMap.at(s) > tagCount) {
-                tagCount = genreMap.at(s);
-                recTag = s;
-            } else if (genreMap.at(s) == tagCount)
-                if (s.compare(recTag) == -1)
-                    recTag = s;
+
+
+        string recTag = "";
+
+        bool found = false;
+        for (int i = 0; !found && i < vc.size(); ++i) {
+            recTag = vc.at(i).second;
+            for (int j = 0; !found && j < content->size(); ++j) {
+                vector<string> tagVec = content->at(j)->getTags();
+                for (int k = 0; !found && k < tagVec.size(); ++k) {
+                    if (tagVec.at(k).compare(recTag) == 0) {
+                        bool goodTag = true;
+                        for (int t = 0; t < his.size(); ++t) {
+                            if (his.at(t)->getId() == content->at(j)->getId())
+                                goodTag = false;
+                        }
+                        if (goodTag) {
+                            found = true;
+                            cur = content->at(j);
+                        }
+
+                    }
+                }
+            }
         }
+        return cur;
     }
-    bool f=true;
-    for(Watchable* w: *content) {
-        std::vector<std::string> str = w->getTags();
-        for (string s: str)
-            if (s.compare(recTag) == 0)
-                for (Watchable *w2: his)
-                    if (w2->getId() == w->getId())
-                        f = false;
-        if (f) {
-            cur = w;
-            break;
-        }
-    }
-    return cur;
-}
+
+
 
 

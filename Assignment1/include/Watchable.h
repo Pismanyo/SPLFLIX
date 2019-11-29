@@ -50,8 +50,6 @@ private:
     std::string seriesName;
     int season;
     int episode;
-    long nextEpisodeId;
-
 };
 
 #endif
