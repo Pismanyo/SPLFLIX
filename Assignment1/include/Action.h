@@ -17,6 +17,7 @@ enum ActionStatus{
 class BaseAction{
 public:
     BaseAction();
+    virtual BaseAction* duplicate() const = 0;
     ActionStatus getStatus() const;
     virtual void act(Session& sess)=0;
     virtual std::string toString() const=0;
@@ -33,6 +34,7 @@ private:
 class CreateUser  : public BaseAction {
 public:
     CreateUser();
+    virtual CreateUser* duplicate() const ;
     virtual void act(Session& sess);
     virtual std::string toString() const;
 };
@@ -40,6 +42,7 @@ public:
 class ChangeActiveUser : public BaseAction {
 public:
     ChangeActiveUser();
+    virtual ChangeActiveUser* duplicate() const ;
     virtual void act(Session& sess);
     virtual std::string toString() const;
 };
@@ -47,6 +50,7 @@ public:
 class DeleteUser : public BaseAction {
 public:
     DeleteUser();
+    virtual DeleteUser* duplicate() const ;
     virtual void act(Session & sess);
     virtual std::string toString() const;
 };
@@ -55,6 +59,7 @@ public:
 class DuplicateUser : public BaseAction {
 public:
     DuplicateUser();
+    virtual DuplicateUser* duplicate() const ;
     virtual void act(Session & sess);
     virtual std::string toString() const;
 };
@@ -62,6 +67,7 @@ public:
 class PrintContentList : public BaseAction {
 public:
     PrintContentList();
+    virtual PrintContentList* duplicate() const ;
     virtual void act (Session& sess);
     virtual std::string toString() const;
 };
@@ -69,6 +75,7 @@ public:
 class PrintWatchHistory : public BaseAction {
 public:
     PrintWatchHistory();
+    virtual PrintWatchHistory* duplicate() const ;
     virtual void act (Session& sess);
     virtual std::string toString() const;
 };
@@ -77,6 +84,7 @@ public:
 class Watch : public BaseAction {
 public:
     Watch();
+    virtual Watch* duplicate() const ;
     virtual void act(Session& sess);
     virtual std::string toString() const;
 };
@@ -85,6 +93,7 @@ public:
 class PrintActionsLog : public BaseAction {
 public:
     PrintActionsLog();
+    virtual PrintActionsLog* duplicate() const ;
     virtual void act(Session& sess);
     virtual std::string toString() const;
 };
@@ -92,6 +101,7 @@ public:
 class Exit : public BaseAction {
 public:
     Exit();
+    virtual Exit* duplicate() const ;
     virtual void act(Session& sess);
     virtual std::string toString() const;
 };

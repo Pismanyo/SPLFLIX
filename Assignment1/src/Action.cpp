@@ -69,6 +69,21 @@ std::string CreateUser::toString() const {
     return "CreateUser";
 }
 
+CreateUser *CreateUser::duplicate() const {
+    CreateUser* cur=new CreateUser();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
+}
 
 
 ChangeActiveUser::ChangeActiveUser() : BaseAction (){}
@@ -90,6 +105,22 @@ void ChangeActiveUser::act(Session &sess) {
 
 std::string ChangeActiveUser::toString() const {
     return "ChangeActiveUser";
+}
+
+ChangeActiveUser *ChangeActiveUser::duplicate() const {
+    ChangeActiveUser* cur=new ChangeActiveUser();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
 }
 
 
@@ -151,6 +182,21 @@ std::string Watch::toString() const {
     return "Watch";
 }
 
+Watch *Watch::duplicate() const {
+    Watch* cur=new Watch();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
+}
 
 
 PrintActionsLog::PrintActionsLog() : BaseAction (){}
@@ -188,6 +234,21 @@ std::string PrintActionsLog::toString() const {
     return "PrintActionsLog";
 }
 
+PrintActionsLog *PrintActionsLog::duplicate() const {
+    PrintActionsLog* cur=new PrintActionsLog();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
+}
 
 
 DeleteUser::DeleteUser(): BaseAction (){}
@@ -212,6 +273,22 @@ std::string DeleteUser::toString() const {
     return "DeleteUser";
 }
 
+DeleteUser *DeleteUser::duplicate() const {
+    DeleteUser* cur=new DeleteUser();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
+}
+
 
 DuplicateUser::DuplicateUser() : BaseAction (){}
 
@@ -229,6 +306,22 @@ void DuplicateUser::act(Session &sess) {
 
 std::string DuplicateUser::toString() const {
     return "DuplicateUser";
+}
+
+DuplicateUser *DuplicateUser::duplicate() const {
+    DuplicateUser* cur=new DuplicateUser();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
 }
 
 
@@ -252,6 +345,22 @@ void PrintWatchHistory::act(Session &sess) {
 
 std::string PrintWatchHistory::toString() const {
     return "PrintWatchHistory";
+}
+
+PrintWatchHistory *PrintWatchHistory::duplicate() const {
+    PrintWatchHistory* cur=new PrintWatchHistory();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
 }
 
 
@@ -285,6 +394,22 @@ std::string PrintContentList::toString() const {
     return "PrintContentList";
 }
 
+PrintContentList *PrintContentList::duplicate() const {
+    PrintContentList* cur=new PrintContentList();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
+}
+
 
 Exit::Exit() : BaseAction (){}
 
@@ -299,6 +424,22 @@ void Exit::act(Session &sess) {
 
 std::string Exit::toString() const {
     return "Exit";
+}
+
+Exit *Exit::duplicate() const {
+    Exit* cur=new Exit();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
 }
 
 
