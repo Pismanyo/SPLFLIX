@@ -12,54 +12,82 @@ using namespace std;
 Session::Session(const std::string &configFilePath) {
 
     fstream file(configFilePath);
-    json why=json::parse(file);
-    json  mov=why["movies"];
-    int id=1;
-    for(auto &run :mov.items())
-    {
-        json into=run.value();
-        Movie *cur=new Movie (id,into["name"],into["length"],into["tags"]);
+    json why = json::parse(file);
+    json mov = why["movies"];
+    int id = 1;
+    for (auto &run :mov.items()) {
+        json into = run.value();
+        Movie *cur = new Movie(id, into["name"], into["length"], into["tags"]);
         content.push_back(cur);
         ++id;
-
     }
-    json tv=why["tv_series"];
-    for(auto &nrun :tv.items())
-    {
-        json into=nrun.value();
-        //cout<<into["seasons"]<<endl;
-        vector <int> sessions =into["seasons"];
-        int counter=1;
-        for (int i :sessions)
-        {
-            for (int epsoidnum=1;epsoidnum<=i;++epsoidnum) {
-                //  cout<<into["name"]<< ","<<into["length"]<< ","<<into["tags"]<<","<<endl;
-                Episode *cur = new Episode(id, into["name"], into["episode_length"], counter,epsoidnum,into["tags"]);
-                //    cout<<into["name"]<< ","<<into["name"]<< ","<<into["length"]<<","<<into["length"]<<endl;
+    json tv = why["tv_series"];
+    for (auto &nrun :tv.items()) {
+        json into = nrun.value();
+        vector<int> sessions = into["seasons"];
+        int counter = 1;
+        for (int i :sessions) {
+            for (int episodeNum = 1; episodeNum <= i; ++episodeNum) {
+                Episode *cur = new Episode(id, into["name"], into["episode_length"], counter, episodeNum, into["tags"]);
                 content.push_back(cur);
                 id++;
             }
             counter++;
         }
     }
-
+    const string na = "default";
+    activeUser = new LengthRecommenderUser(na);
+    userMap.insert({"default", activeUser});
 }
 
 Session::~Session() {
-    for (BaseAction *b: actionsLog)
+    for (BaseAction *b: actionsLog) {
         delete (b);
+        b = nullptr;
+    }
+    for(auto it=userMap.begin(); it!= userMap.end(); ++it) {
+        delete it->second;
+        it->second = nullptr;
+    }
+    for(Watchable* w: content) {
+        delete w;
+        w = nullptr;
+    }
 }
 
+Session::Session(Session& other) {
+    for (Watchable *w:other.content)
+        content.push_back(w->clone());
+    for (BaseAction *b : other.actionsLog)
+        actionsLog.push_back(b->clone());
+    for (const auto &it : other.userMap)
+        userMap.insert({it.first, it.second->clone()});
+    activeUser=other.getActiveUser();
+    recommended=other.recommended;
+//    auto x = userMap.find(activeUser->getName());
+//    activeUser = x->second;
+//    recommended = other.recommended->clone();
+}
+
+//Session& Session::operator=(const Session& other) {
+//    if (&other == this)
+//        return *this;
+//    for (Watchable *w:other.content)
+//        content.push_back(w->clone());
+//    for (BaseAction *b : other.actionsLog)
+//        actionsLog.push_back(b->clone());
+//    for (const auto &it : other.userMap)
+//        userMap.insert({it.first, it.second->clone()});
+//    auto x = userMap.find(activeUser->getName());
+//    activeUser = x->second;
+//    recommended = other.recommended->clone();
+//    return *this;
+//}
 void Session::start() {
     cout<<"SPLFLIX is now on!"<<endl;
     watching= false;
     run=true;
-    const string na="default";
-    activeUser =new LengthRecommenderUser(na);
-    // std::pair<std::string,User*> hjh("default",activeUser);
-    userMap.insert({"default",activeUser});
     string answer1;
-
     while (run)
     {
         getline(cin,answer1);
@@ -73,8 +101,6 @@ void Session::start() {
             PrintContentList *command = new PrintContentList();
             command->act(*this);
             actionsLog.push_back(command);
-
-
         }
         else if (inputs[0].compare("changeuser") == 0) {
             ChangeActiveUser *command = new ChangeActiveUser();
@@ -167,11 +193,6 @@ User* Session::getUser(std::string name) {
 
     return userMap.find(name)->second;
 }
-
-//void Session::setinput(std::string action) {
-//    inputs[1]=action;
-//
-//}
 
 bool Session::is_number(const std::string &s) {
     return !s.empty() && std::find_if(s.begin(),

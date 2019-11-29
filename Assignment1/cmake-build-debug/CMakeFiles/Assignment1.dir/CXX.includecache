@@ -384,6 +384,12 @@ type_traits
 ../include/Watchable.h
 /home/joni/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
 
+/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Main.cpp
+iostream
+-
+../include/Session.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Session.h
+
 /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Session.cpp
 ../include/Session.h
 /home/joni/CLionProjects/SPLFLIX/Assignment1/include/Session.h
@@ -415,6 +421,4 @@ algorithm
 /home/joni/CLionProjects/SPLFLIX/Assignment1/include/Session.h
 ../include/User.h
 /home/joni/CLionProjects/SPLFLIX/Assignment1/include/User.h
-utility
--
 

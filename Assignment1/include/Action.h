@@ -21,6 +21,7 @@ public:
     virtual void act(Session& sess)=0;
     virtual std::string toString() const=0;
     std::string getErrorMessage() const;
+    virtual BaseAction* clone() const = 0;
 protected:
     void complete();
     void error(const std::string& errorMsg);
@@ -35,6 +36,7 @@ public:
     CreateUser();
     virtual void act(Session& sess);
     virtual std::string toString() const;
+    virtual BaseAction* clone() const override;
 };
 
 class ChangeActiveUser : public BaseAction {
@@ -42,6 +44,7 @@ public:
     ChangeActiveUser();
     virtual void act(Session& sess);
     virtual std::string toString() const;
+    virtual BaseAction* clone() const override;
 };
 
 class DeleteUser : public BaseAction {
@@ -49,6 +52,7 @@ public:
     DeleteUser();
     virtual void act(Session & sess);
     virtual std::string toString() const;
+    virtual BaseAction* clone() const override;
 };
 
 
@@ -57,6 +61,7 @@ public:
     DuplicateUser();
     virtual void act(Session & sess);
     virtual std::string toString() const;
+    virtual BaseAction* clone() const override;
 };
 
 class PrintContentList : public BaseAction {
@@ -64,6 +69,7 @@ public:
     PrintContentList();
     virtual void act (Session& sess);
     virtual std::string toString() const;
+    virtual BaseAction* clone() const override;
 };
 
 class PrintWatchHistory : public BaseAction {
@@ -71,6 +77,7 @@ public:
     PrintWatchHistory();
     virtual void act (Session& sess);
     virtual std::string toString() const;
+    virtual BaseAction* clone() const override;
 };
 
 
@@ -79,6 +86,7 @@ public:
     Watch();
     virtual void act(Session& sess);
     virtual std::string toString() const;
+    virtual BaseAction* clone() const override;
 };
 
 
@@ -87,6 +95,7 @@ public:
     PrintActionsLog();
     virtual void act(Session& sess);
     virtual std::string toString() const;
+    virtual BaseAction* clone() const override;
 };
 
 class Exit : public BaseAction {
@@ -94,5 +103,6 @@ public:
     Exit();
     virtual void act(Session& sess);
     virtual std::string toString() const;
+    virtual BaseAction* clone() const override;
 };
 #endif

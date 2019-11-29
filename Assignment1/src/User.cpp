@@ -9,13 +9,11 @@ using namespace std;
 
 
 User::User(const std::string &name):name(name) {}
+
 void User::copyHistory(const User &other) {
     for (Watchable* watch: other.history)
-    {
-        this->history.push_back(watch->clone());
-    }
+        this->history.push_back(watch);
 }
-
 
 string User::getName() const {
     return name;
@@ -43,6 +41,7 @@ void User::sortVec(int left, int right, std::vector<pair<int,std::string>>& vc) 
 }
 
 
+
 RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
     Reruns=0;
 
@@ -67,10 +66,12 @@ User *RerunRecommenderUser::duplactUser(const std::string &name) const{
     return user;
 }
 
-
-LengthRecommenderUser::LengthRecommenderUser(const std::string &name) : User(name) {
-
+User *RerunRecommenderUser::clone() const {
+    return new RerunRecommenderUser(*this);
 }
+
+
+LengthRecommenderUser::LengthRecommenderUser(const std::string &name) : User(name) {}
 
 Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
     vector<Watchable *> *content = s.getContent();
@@ -122,15 +123,17 @@ User *LengthRecommenderUser::duplactUser(const std::string &name) const{
     return user;
 }
 
+User *LengthRecommenderUser::clone() const {
+    return new LengthRecommenderUser(*this);
+}
+
 User *GenreRecommenderUser::duplactUser(const std::string &name) const{
     GenreRecommenderUser *user=new GenreRecommenderUser(name);
     user->copyHistory(*this);
     return user;
 }
 
-GenreRecommenderUser::GenreRecommenderUser(const std::string &name) : User(name) {
-
-}
+GenreRecommenderUser::GenreRecommenderUser(const std::string &name) : User(name) {}
 
 Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
     Watchable *cur = nullptr;
@@ -140,9 +143,9 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
     for (Watchable *w: his) {
         for (string str: w->getTags()) {
             bool tagExists = false;
-            for (int i = 0; i < vc.size(); ++i) {
-                if (vc.at(i).second.compare(str) == 0) {
-                    ++vc.at(i).first;
+            for (pair<int, string> p : vc) {
+                if (p.second.compare(str) == 0) {
+                    ++p.first;
                     tagExists = true;
                 }
             }
@@ -175,7 +178,7 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
 
 
 
-        string recTag = "";
+        string recTag;
 
         bool found = false;
         for (int i = 0; !found && i < vc.size(); ++i) {
@@ -200,6 +203,10 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
         }
         return cur;
     }
+
+User *GenreRecommenderUser::clone() const {
+    return new GenreRecommenderUser(*this);
+}
 
 
 

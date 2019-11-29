@@ -12,6 +12,8 @@ class Watchable;
 class Session{
 public:
     Session(const std::string &configFilePath);
+    Session(Session&);
+    Session& operator=(const Session& other);
     ~Session();
     void start();
     string getInput2();
@@ -29,8 +31,7 @@ public:
     void setWatching(bool set);
     void setRecommended( Watchable* other);
     Watchable* getRecommended();
-    void setRun(bool runing);
-
+    void setRun(bool running);
 private:
     std::vector<Watchable*> content;
     std::vector<BaseAction*> actionsLog;
