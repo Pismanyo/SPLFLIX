@@ -59,6 +59,22 @@ BaseAction *CreateUser::clone() const {
     return new CreateUser(*this);
 }
 
+CreateUser *CreateUser::duplicate() const {
+    CreateUser* cur=new CreateUser();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
+}
+
 ChangeActiveUser::ChangeActiveUser() : BaseAction (){}
 
 void ChangeActiveUser::act(Session &sess) {
@@ -82,6 +98,22 @@ std::string ChangeActiveUser::toString() const {
 
 BaseAction *ChangeActiveUser::clone() const {
     return new ChangeActiveUser(*this);
+}
+
+ChangeActiveUser *ChangeActiveUser::duplicate() const {
+    ChangeActiveUser* cur=new ChangeActiveUser();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
 }
 
 Watch::Watch() : BaseAction (){}
@@ -124,7 +156,6 @@ void Watch::act(Session &sess) {
     if (sess.getWatching()) {
         cout << "Watching " + watch->toString() << endl;
         sess.getActiveUser()->addHistory(watch);
-        complete();
         sess.setRecommended((watch)->getNextWatchable(sess));
         if (sess.getRecommended() != nullptr)
             cout << "We recommend watching " + sess.getRecommended()->toString() + ", continue watching? [y/n]" << endl;
@@ -143,6 +174,23 @@ std::string Watch::toString() const {
 BaseAction *Watch::clone() const {
     return new Watch(*this);
 }
+
+Watch *Watch::duplicate() const {
+    Watch* cur=new Watch();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
+}
+
 
 PrintActionsLog::PrintActionsLog() : BaseAction (){}
 
@@ -179,6 +227,23 @@ BaseAction *PrintActionsLog::clone() const {
     return new PrintActionsLog(*this);
 }
 
+PrintActionsLog *PrintActionsLog::duplicate() const {
+    PrintActionsLog* cur=new PrintActionsLog();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
+}
+
+
 DeleteUser::DeleteUser(): BaseAction (){}
 
 void DeleteUser::act(Session &sess) {
@@ -202,6 +267,22 @@ BaseAction *DeleteUser::clone() const {
     return new DeleteUser(*this);
 }
 
+DeleteUser *DeleteUser::duplicate() const {
+    DeleteUser* cur=new DeleteUser();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
+}
+
 DuplicateUser::DuplicateUser() : BaseAction (){}
 
 void DuplicateUser::act(Session &sess) {
@@ -221,6 +302,22 @@ std::string DuplicateUser::toString() const {
 
 BaseAction *DuplicateUser::clone() const {
     return new DuplicateUser(*this);
+}
+
+DuplicateUser *DuplicateUser::duplicate() const {
+    DuplicateUser* cur=new DuplicateUser();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
 }
 
 PrintWatchHistory::PrintWatchHistory() : BaseAction (){}
@@ -247,6 +344,22 @@ std::string PrintWatchHistory::toString() const {
 
 BaseAction *PrintWatchHistory::clone() const {
     return new PrintWatchHistory(*this);
+}
+
+ PrintWatchHistory *PrintWatchHistory::duplicate() const {
+    PrintWatchHistory* cur=new PrintWatchHistory();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
 }
 
 PrintContentList::PrintContentList() : BaseAction (){}
@@ -281,6 +394,22 @@ BaseAction *PrintContentList::clone() const {
     return new PrintContentList(*this);
 }
 
+PrintContentList *PrintContentList::duplicate() const {
+    PrintContentList* cur=new PrintContentList();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
+}
+
 Exit::Exit() : BaseAction (){}
 
 void Exit::act(Session &sess) {
@@ -296,6 +425,22 @@ std::string Exit::toString() const {
 
 BaseAction *Exit::clone() const {
     return new Exit(*this);
+}
+
+Exit *Exit::duplicate() const {
+    Exit* cur=new Exit();
+    ActionStatus a = this->getStatus();
+    string s = "";
+    switch (a)
+    {
+        case ERROR:
+            cur->error(this->getErrorMessage());
+            break;
+        case COMPLETED:
+            cur->complete();
+            break;
+    }
+    return cur;
 }
 
 

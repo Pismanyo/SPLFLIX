@@ -40,8 +40,6 @@ void User::sortVec(int left, int right, std::vector<pair<int,std::string>>& vc) 
     }
 }
 
-
-
 RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
     Reruns=0;
 
@@ -112,6 +110,7 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
             }
 
         }
+    return cur;
 
     }
     return cur;
