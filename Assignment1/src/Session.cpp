@@ -24,15 +24,15 @@ Session::Session(const std::string &configFilePath) {
     json tv = why["tv_series"];
     for (auto &nrun :tv.items()) {
         json into = nrun.value();
-        vector<int> sessions = into["seasons"];
-        int counter = 1;
-        for (int i :sessions) {
+        vector<int> seasons = into["seasons"];
+        int season = 1;
+        for (int i :seasons) {
             for (int episodeNum = 1; episodeNum <= i; ++episodeNum) {
-                Episode *cur = new Episode(id, into["name"], into["episode_length"], counter, episodeNum, into["tags"]);
+                Episode *cur = new Episode(id, into["name"], into["episode_length"], season, episodeNum, into["tags"]);
                 content.push_back(cur);
-                id++;
+                ++id;
             }
-            counter++;
+            ++season;
         }
     }
     const string na = "default";
@@ -41,45 +41,86 @@ Session::Session(const std::string &configFilePath) {
 }
 
 Session::~Session() {
-    for (BaseAction *b: actionsLog) {
-        delete b;
-        b = nullptr;
+    if(!actionsLog.empty()) {
+        for (BaseAction *b: actionsLog) {
+            delete b;
+            b = nullptr;
+        }
     }
-    for(auto it=userMap.begin(); it!= userMap.end(); ++it) {
-        delete it->second;
-        it->second = nullptr;
+    if(!userMap.empty()) {
+        for (auto &it : userMap) {
+            delete it.second;
+            it.second = nullptr;
+        }
     }
-    for(Watchable* w: content) {
-        delete w;
-        w = nullptr;
+    if(!content.empty()) {
+        for (Watchable *w: content) {
+            delete w;
+            w = nullptr;
+        }
     }
+    activeUser = nullptr;
+    recommended = nullptr;
 }
 
-Session::Session(Session& other) {
+Session::Session(const Session& other) {
     for (Watchable *w:other.content)
         content.push_back(w->clone());
     for (BaseAction *b : other.actionsLog)
         actionsLog.push_back(b->clone());
     for (const auto &it : other.userMap)
         userMap.insert({it.first, it.second->clone()});
-    activeUser = other.activeUser->clone();
-    recommended = other.recommended->clone();
+    auto x = userMap.find(other.activeUser->getName());
+    activeUser = x->second;
+    for (const auto &it : other.userMap) {
+        vector<Watchable*> oldHis = it.second->get_history();
+        vector<Watchable*> newHis;
+        for(Watchable* w: oldHis){
+            for(Watchable* w2: content){
+                if(w->getId()==w2->getId())
+                    newHis.push_back(w2);
+            }
+        }
+        it.second->updateHistory(newHis);
+    }
+        if (other.recommended != nullptr)
+        for (Watchable *w: content)
+            if (w->getId() == other.recommended->getId())
+                recommended = w;
 }
 
-//Session& Session::operator=(const Session& other) {
-//    if (&other == this)
-//        return *this;
-//    for (Watchable *w:other.content)
-//        content.push_back(w);
-//    for (BaseAction *b : other.actionsLog)
-//        actionsLog.push_back(b->clone());
-//    for (const auto &it : other.userMap)
-//        userMap.insert({it.first, it.second->clone()});
-//    auto x = userMap.find(activeUser->getName());
-//    activeUser = x->second;
-//    recommended = other.recommended->clone();
-//    return *this;
-//}
+Session& Session::operator=(const Session& other) {
+    if (&other == this)
+        return *this;
+    for (BaseAction *b: actionsLog) {
+        delete b;
+        b = nullptr;
+    }
+    for (auto &it : userMap) {
+        delete it.second;
+        it.second = nullptr;
+    }
+    for (Watchable *w: content) {
+        delete w;
+        w = nullptr;
+    }
+    activeUser = nullptr;
+    recommended = nullptr;
+
+    for (Watchable *w:other.content)
+        content.push_back(w->clone());
+    for (BaseAction *b : other.actionsLog)
+        actionsLog.push_back(b->clone());
+    for (const auto &it : other.userMap)
+        userMap.insert({it.first, it.second->clone()});
+    auto x = userMap.find(other.activeUser->getName());
+    activeUser = x->second;
+    for (Watchable *w: content)
+        if (w->getId() == other.recommended->getId())
+            recommended = w;
+    return *this;
+}
+
 void Session::start() {
     cout<<"SPLFLIX is now on!"<<endl;
     watching= false;

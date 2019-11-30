@@ -14,7 +14,7 @@ Episode::Episode( long _id, const string &_seriesName,
                   seriesName(_seriesName),season(_season),episode(_episode){}
 
 string Episode::toString() const {
-    string forses="";
+    string forses;
     if (season<10)
         forses.append("0"+to_string(season));
     else
@@ -67,16 +67,16 @@ Watchable *Episode::clone() const {
 
 Movie::Movie(long _id, const string &_name, int _length, const std::vector<std::string> &_tags) : Watchable(_id,_length, _tags),
                                                                                                   name(_name){}
-std::string Movie::toString() const {
-    return name;
-}
-
 Watchable *Movie::getNextWatchable(Session &a) const {
     return (*(a.getActiveUser())).getRecommendation(a);
 }
 
 Watchable *Movie::clone() const {
     return new Movie(*this);
+}
+
+std::string Movie::toString() const {
+    return name;
 }
 
 

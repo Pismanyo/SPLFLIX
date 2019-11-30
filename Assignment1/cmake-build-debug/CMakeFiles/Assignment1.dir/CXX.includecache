@@ -374,6 +374,16 @@ limits
 type_traits
 -
 
+/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp
+../include/Action.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Action.h
+../include/Session.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Session.h
+../include/User.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/User.h
+../include/Watchable.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
+
 /home/joni/CLionProjects/SPLFLIX/Assignment1/src/Session.cpp
 ../include/Session.h
 /home/joni/CLionProjects/SPLFLIX/Assignment1/include/Session.h
@@ -391,10 +401,20 @@ sstream
 /home/joni/CLionProjects/SPLFLIX/Assignment1/src/User.cpp
 algorithm
 -
+utility
+-
 ../include/User.h
 /home/joni/CLionProjects/SPLFLIX/Assignment1/include/User.h
 ../include/Session.h
 /home/joni/CLionProjects/SPLFLIX/Assignment1/include/Session.h
 ../include/Watchable.h
 /home/joni/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
+
+/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Watchable.cpp
+../include/Watchable.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
+../include/Session.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Session.h
+../include/User.h
+/home/joni/CLionProjects/SPLFLIX/Assignment1/include/User.h
 

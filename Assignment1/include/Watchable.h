@@ -27,7 +27,7 @@ private:
 class Movie : public Watchable{
 public:
     Movie(long id, const std::string& name, int length, const std::vector<std::string>& tags);
-    virtual std::string toString() const;
+    virtual std::string toString() const override;
     virtual Watchable* getNextWatchable(Session&) const;
     virtual Watchable* clone() const override ;
 private:
@@ -40,7 +40,7 @@ class Episode: public Watchable{
 public:
     Episode(long id, const std::string &seriesName,
             int length, int season, int episode, const std::vector<std::string> &tags);
-    virtual std::string toString() const;
+    virtual std::string toString() const override;
     virtual std::string toStringNextSeason() const ;
     virtual std::string toStringNextEpisode() const ;
     virtual Watchable* getNextWatchable(Session&) const;

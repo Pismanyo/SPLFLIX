@@ -17,6 +17,7 @@ public:
     virtual User* duplactUser(const std::string& name )const=0;
     std::vector<Watchable*> get_history() const;
     void addHistory(Watchable* watch);
+    void updateHistory(std::vector<Watchable*>);
     static void sortVec(int,int,std::vector<std::pair<int,std::string>>&);
     virtual User* clone() const =0;
 protected:

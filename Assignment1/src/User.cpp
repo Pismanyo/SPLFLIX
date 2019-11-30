@@ -1,5 +1,6 @@
 
 #include <algorithm>
+#include <utility>
 #include "../include/User.h"
 #include "../include/Session.h"
 #include "../include/Watchable.h"
@@ -39,6 +40,11 @@ void User::sortVec(int left, int right, std::vector<pair<int,std::string>>& vc) 
         vc.at(i).second = fixedPart.at(i - left).second;
     }
 }
+
+void User::updateHistory(std::vector<Watchable *> updatedHis) {
+    history = std::move(updatedHis);
+}
+
 
 RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
     Reruns=0;

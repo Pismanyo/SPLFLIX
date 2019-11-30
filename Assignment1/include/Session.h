@@ -12,7 +12,7 @@ class Watchable;
 class Session{
 public:
     Session(const std::string &configFilePath);
-    Session(Session&);
+    Session(const Session&);
     Session& operator=(const Session& other);
     ~Session();
     void start();
