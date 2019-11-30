@@ -11,44 +11,17 @@ using namespace std;
 
 User::User(const std::string &name):name(name) {}
 
-void User::copyHistory(const User &other) {
-    for (Watchable* watch: other.history)
-        this->history.push_back(watch);
-}
-
-string User::getName() const {
-    return name;
-}
-
-std::vector<Watchable *> User::get_history() const {
-    return history;
-}
-
-void User::addHistory(Watchable *watch) {
-    history.push_back(watch);
-
-}
-
-void User::sortVec(int left, int right, std::vector<pair<int,std::string>>& vc) {
-    std::vector<pair<int, std::string>> fixedPart;
-    for (int i = left; i <= right; ++i) {
-        fixedPart.push_back(vc.at(i));
-    }
-    reverse(fixedPart.begin(), fixedPart.end());
-
-    for (int i = left; i <= right; ++i) {
-        vc.at(i).second = fixedPart.at(i - left).second;
-    }
-}
-
-void User::updateHistory(std::vector<Watchable *> updatedHis) {
-    history = std::move(updatedHis);
-}
-
+User::~User() = default;
 
 RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
     Reruns=0;
+}
 
+User *RerunRecommenderUser::duplactUser(const std::string &name) const{
+    RerunRecommenderUser *user=new RerunRecommenderUser(name);
+    user->copyHistory(*this);
+    user->Reruns=this->Reruns;
+    return user;
 }
 
 Watchable *RerunRecommenderUser::getRecommendation(Session &s) {
@@ -60,19 +33,13 @@ Watchable *RerunRecommenderUser::getRecommendation(Session &s) {
     return cur;
 }
 
-User *RerunRecommenderUser::duplactUser(const std::string &name) const{
-    RerunRecommenderUser *user=new RerunRecommenderUser(name);
+LengthRecommenderUser::LengthRecommenderUser(const std::string &name) : User(name) {}
+
+User *LengthRecommenderUser::duplactUser(const std::string &name) const{
+    LengthRecommenderUser *user=new LengthRecommenderUser(name);
     user->copyHistory(*this);
-    user->Reruns=this->Reruns;
     return user;
 }
-
-User *RerunRecommenderUser::clone() const {
-    return new RerunRecommenderUser(*this);
-}
-
-
-LengthRecommenderUser::LengthRecommenderUser(const std::string &name) : User(name) {}
 
 Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
     vector<Watchable *> *content = s.getContent();
@@ -88,7 +55,8 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
     for (Watchable *c : *content) {
         if (closest == -1) {
             bool contains = false;
-            for (int i=0;i<his.size()&&(!contains);++i ){
+            int x = his.size();
+            for (int i = 0; i < x && (!contains); ++i) {
                 if (his[i]->getId() == c->getId())
                     contains = true;
             }
@@ -96,12 +64,11 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
                 cur = c;
                 closest = abs(cur->getLength() - average);
             }
-        }
-
-        else {
+        } else {
             if (closest > abs(c->getLength() - average)) {
                 bool contains = false;
-                for (int i=0;i<his.size()&&(!contains);++i ){
+                int y = his.size();
+                for (int i = 0; i < y && (!contains); ++i) {
                     if (his[i]->getId() == c->getId())
                         contains = true;
                 }
@@ -115,23 +82,13 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
     return cur;
 }
 
-User *LengthRecommenderUser::duplactUser(const std::string &name) const{
-    LengthRecommenderUser *user=new LengthRecommenderUser(name);
-    user->copyHistory(*this);
-    return user;
-}
-
-User *LengthRecommenderUser::clone() const {
-    return new LengthRecommenderUser(*this);
-}
+GenreRecommenderUser::GenreRecommenderUser(const std::string &name) : User(name) {}
 
 User *GenreRecommenderUser::duplactUser(const std::string &name) const{
     GenreRecommenderUser *user=new GenreRecommenderUser(name);
     user->copyHistory(*this);
     return user;
 }
-
-GenreRecommenderUser::GenreRecommenderUser(const std::string &name) : User(name) {}
 
 Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
     Watchable *cur = nullptr;
@@ -154,11 +111,12 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
     sort(vc.begin(), vc.end());
     reverse(vc.begin(), vc.end());
 
+    int vcSize=vc.size();
     if (!vc.empty()) {
         int x = vc.at(0).first;
         string st = vc.at(0).second;
         int count = 0;
-        for (int t = 1; t < vc.size(); ++t) {
+        for (int t = 1; t < vcSize; ++t) {
             if (vc.at(t).first == x)
                 ++count;
             else {
@@ -177,14 +135,17 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
         string recTag;
 
         bool found = false;
-        for (int i = 0; !found && i < vc.size(); ++i) {
+        for (int i = 0; !found && i < vcSize; ++i) {
             recTag = vc.at(i).second;
-            for (int j = 0; !found && j < content->size(); ++j) {
+            int contentSize = content->size();
+            for (int j = 0; !found && j < contentSize; ++j) {
                 vector<string> tagVec = content->at(j)->getTags();
-                for (int k = 0; !found && k < tagVec.size(); ++k) {
+                int tagVecSize = tagVec.size();
+                for (int k = 0; !found && k < tagVecSize; ++k) {
                     if (tagVec.at(k).compare(recTag) == 0) {
                         bool goodTag = true;
-                        for (int t = 0; t < his.size(); ++t) {
+                        int hisSize=his.size();
+                        for (int t = 0; t < hisSize; ++t) {
                             if (his.at(t)->getId() == content->at(j)->getId())
                                 goodTag = false;
                         }
@@ -192,7 +153,6 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
                             found = true;
                             cur = content->at(j);
                         }
-
                     }
                 }
             }
@@ -200,10 +160,50 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
         return cur;
     }
 
+User *RerunRecommenderUser::clone() const {
+    return new RerunRecommenderUser(*this);
+}
+
+User *LengthRecommenderUser::clone() const {
+    return new LengthRecommenderUser(*this);
+}
+
 User *GenreRecommenderUser::clone() const {
     return new GenreRecommenderUser(*this);
 }
 
+string User::getName() const {
+    return name;
+}
+
+std::vector<Watchable *> User::get_history() const {
+    return history;
+}
+
+void User::addHistory(Watchable *watch) {
+    history.push_back(watch);
+}
+
+void User::updateHistory(std::vector<Watchable *> updatedHis) {
+    history = std::move(updatedHis);
+}
+
+void User::copyHistory(const User &other) {
+    for (Watchable* watch: other.history)
+        this->history.push_back(watch);
+}
+
+void User::sortVec(int left, int right, std::vector<pair<int,std::string>>& vc) {
+    std::vector<pair<int, std::string>> fixedPart;
+    for (int i = left; i <= right; ++i) {
+        fixedPart.push_back(vc.at(i));
+    }
+    reverse(fixedPart.begin(), fixedPart.end());
+
+    for (int i = left; i <= right; ++i) {
+        vc.at(i).second = fixedPart.at(i - left).second;
+    }
+}
 
 
 

@@ -25,6 +25,7 @@ string Episode::toString() const {
 
     return seriesName+" S"+forses;
 }
+
 string Episode::toStringNextEpisode() const {
     string forses;
     if (season<10)
@@ -37,6 +38,7 @@ string Episode::toStringNextEpisode() const {
 
     return seriesName+" S"+forses;
 }
+
 string Episode::toStringNextSeason() const {
     string forses;
     if (season+1<10)
@@ -65,8 +67,12 @@ Watchable *Episode::clone() const {
     return new Episode(*this);
 }
 
-Movie::Movie(long _id, const string &_name, int _length, const std::vector<std::string> &_tags) : Watchable(_id,_length, _tags),
-                                                                                                  name(_name){}
+Movie::Movie(long _id, const string &_name, int _length, const std::vector<std::string> &_tags) : Watchable(_id,_length, _tags),name(_name){}
+
+std::string Movie::toString() const {
+    return name;
+}
+
 Watchable *Movie::getNextWatchable(Session &a) const {
     return (*(a.getActiveUser())).getRecommendation(a);
 }
@@ -74,11 +80,6 @@ Watchable *Movie::getNextWatchable(Session &a) const {
 Watchable *Movie::clone() const {
     return new Movie(*this);
 }
-
-std::string Movie::toString() const {
-    return name;
-}
-
 
 long Watchable::getId() const {
     return id;
@@ -91,10 +92,3 @@ std::vector<std::string> Watchable::getTags() const {
 int Watchable::getLength() const  {
     return length;
 }
-
-
-
-
-
-
-

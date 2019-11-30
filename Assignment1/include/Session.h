@@ -14,6 +14,8 @@ public:
     Session(const std::string &configFilePath);
     Session(const Session&);
     Session& operator=(const Session& other);
+    Session(Session &&other);
+    Session& operator=( Session&& other);
     ~Session();
     void start();
     string getInput2();
@@ -33,14 +35,14 @@ public:
     Watchable* getRecommended();
     void setRun(bool running);
 private:
-    std::vector<Watchable*> content;
-    std::vector<BaseAction*> actionsLog;
-    std::unordered_map<std::string,User*> userMap;
-    User* activeUser;
-    string inputs[3];
-    int counter;
-    bool watching;
-    bool run;
-    Watchable* recommended;
+    std::vector<Watchable*> content{};
+    std::vector<BaseAction*> actionsLog{};
+    std::unordered_map<std::string,User*> userMap{};
+    User* activeUser{};
+    string inputs[3]{};
+    int counter{};
+    bool watching{};
+    bool run{};
+    Watchable* recommended{};
 };
 #endif

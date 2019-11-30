@@ -13,11 +13,5 @@ int main(int argc, char** argv){
     Session s2 = *s;
     delete(s);
     s2.start();
-//Session s(argv[1]);
-//    s.start();
-//    Session s2(s);
-//    s2.start();
-//    s.start();
-//    s2.start();
     return 0;
 }

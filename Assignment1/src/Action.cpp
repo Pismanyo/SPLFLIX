@@ -11,6 +11,7 @@ ActionStatus BaseAction::getStatus() const {
 
 BaseAction::BaseAction(): errorMsg("Error"),status(PENDING) {}
 
+BaseAction::~BaseAction() = default;
 
 std::string BaseAction::getErrorMsg() const {
     return errorMsg;
@@ -51,30 +52,6 @@ void CreateUser::act(Session &sess) {
     } else error("Incorrect input");
 }
 
-std::string CreateUser::toString() const {
-    return "CreateUser";
-}
-
-BaseAction *CreateUser::clone() const {
-    return new CreateUser(*this);
-}
-
-CreateUser *CreateUser::duplicate() const {
-    CreateUser* cur=new CreateUser();
-    ActionStatus a = this->getStatus();
-    string s = "";
-    switch (a)
-    {
-        case ERROR:
-            cur->error(this->getErrorMessage());
-            break;
-        case COMPLETED:
-            cur->complete();
-            break;
-    }
-    return cur;
-}
-
 ChangeActiveUser::ChangeActiveUser() : BaseAction (){}
 
 void ChangeActiveUser::act(Session &sess) {
@@ -88,32 +65,6 @@ void ChangeActiveUser::act(Session &sess) {
             complete();
         }
     } else error("Incorrect command");
-
-
-}
-
-std::string ChangeActiveUser::toString() const {
-    return "ChangeActiveUser";
-}
-
-BaseAction *ChangeActiveUser::clone() const {
-    return new ChangeActiveUser(*this);
-}
-
-ChangeActiveUser *ChangeActiveUser::duplicate() const {
-    ChangeActiveUser* cur=new ChangeActiveUser();
-    ActionStatus a = this->getStatus();
-    string s = "";
-    switch (a)
-    {
-        case ERROR:
-            cur->error(this->getErrorMessage());
-            break;
-        case COMPLETED:
-            cur->complete();
-            break;
-    }
-    return cur;
 }
 
 Watch::Watch() : BaseAction (){}
@@ -124,7 +75,7 @@ void Watch::act(Session &sess) {
         if (sess.getCounter() == 2 && sess.is_number(sess.getInput2())) {
             int id = stoi(sess.getInput2());
             bool found = false;
-            for (auto it = sess.getContent()->begin(); it != sess.getContent()->end() | found; ++it) {
+            for (auto it = sess.getContent()->begin(); it != sess.getContent()->end() || found; ++it) {
                 if ((*it)->getId() == id) {
                     watch = (*it);
                     sess.setWatching(true);
@@ -164,33 +115,7 @@ void Watch::act(Session &sess) {
             sess.setWatching(false);
         }
     }
-
 }
-
-std::string Watch::toString() const {
-    return "Watch";
-}
-
-BaseAction *Watch::clone() const {
-    return new Watch(*this);
-}
-
-Watch *Watch::duplicate() const {
-    Watch* cur=new Watch();
-    ActionStatus a = this->getStatus();
-    string s = "";
-    switch (a)
-    {
-        case ERROR:
-            cur->error(this->getErrorMessage());
-            break;
-        case COMPLETED:
-            cur->complete();
-            break;
-    }
-    return cur;
-}
-
 
 PrintActionsLog::PrintActionsLog() : BaseAction (){}
 
@@ -219,31 +144,6 @@ void PrintActionsLog::act(Session &sess) {
     }
 }
 
-std::string PrintActionsLog::toString() const {
-    return "PrintActionsLog";
-}
-
-BaseAction *PrintActionsLog::clone() const {
-    return new PrintActionsLog(*this);
-}
-
-PrintActionsLog *PrintActionsLog::duplicate() const {
-    PrintActionsLog* cur=new PrintActionsLog();
-    ActionStatus a = this->getStatus();
-    string s = "";
-    switch (a)
-    {
-        case ERROR:
-            cur->error(this->getErrorMessage());
-            break;
-        case COMPLETED:
-            cur->complete();
-            break;
-    }
-    return cur;
-}
-
-
 DeleteUser::DeleteUser(): BaseAction (){}
 
 void DeleteUser::act(Session &sess) {
@@ -259,30 +159,6 @@ void DeleteUser::act(Session &sess) {
     } else error("Incorrect command");
 }
 
-std::string DeleteUser::toString() const {
-    return "DeleteUser";
-}
-
-BaseAction *DeleteUser::clone() const {
-    return new DeleteUser(*this);
-}
-
-DeleteUser *DeleteUser::duplicate() const {
-    DeleteUser* cur=new DeleteUser();
-    ActionStatus a = this->getStatus();
-    string s = "";
-    switch (a)
-    {
-        case ERROR:
-            cur->error(this->getErrorMessage());
-            break;
-        case COMPLETED:
-            cur->complete();
-            break;
-    }
-    return cur;
-}
-
 DuplicateUser::DuplicateUser() : BaseAction (){}
 
 void DuplicateUser::act(Session &sess) {
@@ -294,30 +170,6 @@ void DuplicateUser::act(Session &sess) {
         sess.getUserMap()->insert({todup->getName(), todup});
         complete();
     }
-}
-
-std::string DuplicateUser::toString() const {
-    return "DuplicateUser";
-}
-
-BaseAction *DuplicateUser::clone() const {
-    return new DuplicateUser(*this);
-}
-
-DuplicateUser *DuplicateUser::duplicate() const {
-    DuplicateUser* cur=new DuplicateUser();
-    ActionStatus a = this->getStatus();
-    string s = "";
-    switch (a)
-    {
-        case ERROR:
-            cur->error(this->getErrorMessage());
-            break;
-        case COMPLETED:
-            cur->complete();
-            break;
-    }
-    return cur;
 }
 
 PrintWatchHistory::PrintWatchHistory() : BaseAction (){}
@@ -338,30 +190,6 @@ void PrintWatchHistory::act(Session &sess) {
     }
 }
 
-std::string PrintWatchHistory::toString() const {
-    return "PrintWatchHistory";
-}
-
-BaseAction *PrintWatchHistory::clone() const {
-    return new PrintWatchHistory(*this);
-}
-
- PrintWatchHistory *PrintWatchHistory::duplicate() const {
-    PrintWatchHistory* cur=new PrintWatchHistory();
-    ActionStatus a = this->getStatus();
-    string s = "";
-    switch (a)
-    {
-        case ERROR:
-            cur->error(this->getErrorMessage());
-            break;
-        case COMPLETED:
-            cur->complete();
-            break;
-    }
-    return cur;
-}
-
 PrintContentList::PrintContentList() : BaseAction (){}
 
 void PrintContentList::act(Session &sess) {
@@ -373,7 +201,8 @@ void PrintContentList::act(Session &sess) {
             string s = "[";
             string str = to_string(w->getId()) + ". " + w->toString() + " " + to_string(w->getLength()) + " minutes";
             vector<string> tags = w->getTags();
-            for (int i = 0; i < tags.size(); ++i) {
+            int tagSize = tags.size();
+            for (int i = 0; i < tagSize; ++i) {
                 if (i != 0)
                     s.append(",");
                 s.append(tags[i]);
@@ -386,30 +215,6 @@ void PrintContentList::act(Session &sess) {
     }
 }
 
-std::string PrintContentList::toString() const {
-    return "PrintContentList";
-}
-
-BaseAction *PrintContentList::clone() const {
-    return new PrintContentList(*this);
-}
-
-PrintContentList *PrintContentList::duplicate() const {
-    PrintContentList* cur=new PrintContentList();
-    ActionStatus a = this->getStatus();
-    string s = "";
-    switch (a)
-    {
-        case ERROR:
-            cur->error(this->getErrorMessage());
-            break;
-        case COMPLETED:
-            cur->complete();
-            break;
-    }
-    return cur;
-}
-
 Exit::Exit() : BaseAction (){}
 
 void Exit::act(Session &sess) {
@@ -419,28 +224,74 @@ void Exit::act(Session &sess) {
     } else error("invaild input");
 }
 
+std::string CreateUser::toString() const {
+    return "CreateUser";
+}
+
+std::string ChangeActiveUser::toString() const {
+    return "ChangeActiveUser";
+}
+
+std::string Watch::toString() const {
+    return "Watch";
+}
+
+std::string PrintActionsLog::toString() const {
+    return "PrintActionsLog";
+}
+
+std::string DeleteUser::toString() const {
+    return "DeleteUser";
+}
+
+std::string DuplicateUser::toString() const {
+    return "DuplicateUser";
+}
+
+std::string PrintWatchHistory::toString() const {
+    return "PrintWatchHistory";
+}
+
+std::string PrintContentList::toString() const {
+    return "PrintContentList";
+}
+
 std::string Exit::toString() const {
     return "Exit";
+}
+
+BaseAction *CreateUser::clone() const {
+    return new CreateUser(*this);
+}
+
+BaseAction *ChangeActiveUser::clone() const {
+    return new ChangeActiveUser(*this);
+}
+
+BaseAction *Watch::clone() const {
+    return new Watch(*this);
+}
+
+BaseAction *PrintActionsLog::clone() const {
+    return new PrintActionsLog(*this);
+}
+
+BaseAction *DeleteUser::clone() const {
+    return new DeleteUser(*this);
+}
+
+BaseAction *DuplicateUser::clone() const {
+    return new DuplicateUser(*this);
+}
+
+BaseAction *PrintWatchHistory::clone() const {
+    return new PrintWatchHistory(*this);
+}
+
+BaseAction *PrintContentList::clone() const {
+    return new PrintContentList(*this);
 }
 
 BaseAction *Exit::clone() const {
     return new Exit(*this);
 }
-
-Exit *Exit::duplicate() const {
-    Exit* cur=new Exit();
-    ActionStatus a = this->getStatus();
-    string s = "";
-    switch (a)
-    {
-        case ERROR:
-            cur->error(this->getErrorMessage());
-            break;
-        case COMPLETED:
-            cur->complete();
-            break;
-    }
-    return cur;
-}
-
-

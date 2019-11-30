@@ -11,6 +11,7 @@ class Session;
 class User{
 public:
     User(const std::string& name);
+    virtual ~User();
     void copyHistory(const User &other);
     virtual Watchable* getRecommendation(Session& s) = 0;
     std::string getName() const;
@@ -21,9 +22,9 @@ public:
     static void sortVec(int,int,std::vector<std::pair<int,std::string>>&);
     virtual User* clone() const =0;
 protected:
-    std::vector<Watchable*> history;
+    std::vector<Watchable*> history{};
 private:
-    const std::string name;
+    const std::string name{};
 };
 
 class LengthRecommenderUser : public User {
@@ -42,7 +43,7 @@ public:
     virtual Watchable* getRecommendation(Session& s);
     virtual User* clone() const override ;
 private:
-    int Reruns;
+    int Reruns{};
 };
 
 class GenreRecommenderUser : public User {
