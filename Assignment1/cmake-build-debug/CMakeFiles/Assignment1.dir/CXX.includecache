@@ -24,29 +24,9 @@ string
 Action.h
 /home/joni/CLionProjects/SPLFLIX/Assignment1/include/Action.h
 
-/home/joni/CLionProjects/SPLFLIX/Assignment1/include/User.h
-vector
+/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Main.cpp
+iostream
 -
-string
--
-unordered_set
--
-unordered_map
--
-
-/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
-string
--
-vector
--
-
-/home/joni/CLionProjects/SPLFLIX/Assignment1/src/Action.cpp
-../include/Action.h
-/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Action.h
 ../include/Session.h
 /home/joni/CLionProjects/SPLFLIX/Assignment1/include/Session.h
-../include/User.h
-/home/joni/CLionProjects/SPLFLIX/Assignment1/include/User.h
-../include/Watchable.h
-/home/joni/CLionProjects/SPLFLIX/Assignment1/include/Watchable.h
 
