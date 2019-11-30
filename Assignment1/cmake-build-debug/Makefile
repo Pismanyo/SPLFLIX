@@ -39,26 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-<<<<<<< HEAD
 CMAKE_COMMAND = /snap/clion/97/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
 RM = /snap/clion/97/bin/cmake/linux/bin/cmake -E remove -f
-=======
-CMAKE_COMMAND = /home/lior/Downloads/clion-2019.2.5/bin/cmake/linux/bin/cmake
-
-# The command to remove a file.
-RM = /home/lior/Downloads/clion-2019.2.5/bin/cmake/linux/bin/cmake -E remove -f
->>>>>>> cce9a0647face5639f6c6f45baeac9fd96a41783
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lior/CLionProjects/SPLFLIX/Assignment1
+CMAKE_SOURCE_DIR = /home/joni/CLionProjects/SPLFLIX/Assignment1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -66,11 +59,7 @@ CMAKE_BINARY_DIR = /home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debu
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-<<<<<<< HEAD
 	/snap/clion/97/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-=======
-	/home/lior/Downloads/clion-2019.2.5/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
->>>>>>> cce9a0647face5639f6c6f45baeac9fd96a41783
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -81,11 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-<<<<<<< HEAD
 	/snap/clion/97/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-=======
-	/home/lior/Downloads/clion-2019.2.5/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
->>>>>>> cce9a0647face5639f6c6f45baeac9fd96a41783
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -95,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles /home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles /home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lior/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joni/CLionProjects/SPLFLIX/Assignment1/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

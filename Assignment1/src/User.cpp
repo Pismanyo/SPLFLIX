@@ -48,12 +48,9 @@ RerunRecommenderUser::RerunRecommenderUser(const string &name) : User(name) {
 Watchable *RerunRecommenderUser::getRecommendation(Session &s) {
     Watchable *cur=nullptr;
     vector<Watchable*> his=this->get_history();
-    if(his.size()!=0)
-    {
+    if(!his.empty())
         cur= his[Reruns%(his.size())];
-    }
-
-    Reruns++;
+    ++Reruns;
     return cur;
 }
 
@@ -106,12 +103,8 @@ Watchable *LengthRecommenderUser::getRecommendation(Session &s) {
                     cur = c;
                     closest = abs(cur->getLength() - average);
                 }
-
             }
-
         }
-    return cur;
-
     }
     return cur;
 }
@@ -174,8 +167,6 @@ Watchable *GenreRecommenderUser::getRecommendation(Session &s) {
         if(count>0)
             sortVec(vc.size()-1-count,vc.size()-1,vc);
     }
-
-
 
         string recTag;
 

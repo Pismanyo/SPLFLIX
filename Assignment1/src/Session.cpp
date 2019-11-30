@@ -42,7 +42,7 @@ Session::Session(const std::string &configFilePath) {
 
 Session::~Session() {
     for (BaseAction *b: actionsLog) {
-        delete (b);
+        delete b;
         b = nullptr;
     }
     for(auto it=userMap.begin(); it!= userMap.end(); ++it) {
@@ -62,18 +62,15 @@ Session::Session(Session& other) {
         actionsLog.push_back(b->clone());
     for (const auto &it : other.userMap)
         userMap.insert({it.first, it.second->clone()});
-    activeUser=other.getActiveUser();
-    recommended=other.recommended;
-//    auto x = userMap.find(activeUser->getName());
-//    activeUser = x->second;
-//    recommended = other.recommended->clone();
+    activeUser = other.activeUser->clone();
+    recommended = other.recommended->clone();
 }
 
 //Session& Session::operator=(const Session& other) {
 //    if (&other == this)
 //        return *this;
 //    for (Watchable *w:other.content)
-//        content.push_back(w->clone());
+//        content.push_back(w);
 //    for (BaseAction *b : other.actionsLog)
 //        actionsLog.push_back(b->clone());
 //    for (const auto &it : other.userMap)
