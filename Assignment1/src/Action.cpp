@@ -48,8 +48,8 @@ void CreateUser::act(Session &sess) {
             GenreRecommenderUser *cur = new GenreRecommenderUser(input2);
             sess.getUserMap()->insert({input2, cur});
             complete();
-        } else error("Incorrect input");
-    } else error("Incorrect input");
+        } else error("Invalid algorithm type selected.");
+    } else error("Username already exists.");
 }
 
 ChangeActiveUser::ChangeActiveUser() : BaseAction (){}
@@ -59,7 +59,7 @@ void ChangeActiveUser::act(Session &sess) {
         unordered_map<string, User *> *userList = sess.getUserMap();
         unordered_map<string, User *>::const_iterator got = userList->find(sess.getInput2());
         if (sess.getCounter() != 2 || got == userList->end())
-            error("User Not Found");
+            error("User not found.");
         else {
             sess.setActiveUser(got->second);
             complete();
@@ -84,7 +84,7 @@ void Watch::act(Session &sess) {
             }
         }
         if (!sess.getWatching()) {
-            error("Invalid input");
+            error("Invalid input.");
         }
     } else {
         watch = sess.getRecommended();
@@ -98,7 +98,7 @@ void Watch::act(Session &sess) {
             complete();
         } else if (sess.getRecommended() != nullptr) {
             sess.setWatching(false);
-            error("Invalid input");
+            error("Invalid input.");
         } else {
             sess.setWatching(false);
             complete();
@@ -121,10 +121,12 @@ PrintActionsLog::PrintActionsLog() : BaseAction (){}
 
 void PrintActionsLog::act(Session &sess) {
     if (sess.getCounter() != 1)
-        error("Incorrect input");
+        error("Incorrect input.");
     else {
         std::vector<BaseAction *> *actionsLog = sess.getActionsLog();
-        for (BaseAction *b: *actionsLog) {
+        int actionLogEnd= actionsLog->size()-1;
+        for (int i=actionLogEnd; i>=0; --i) {
+            BaseAction* b = actionsLog->at(i);
             ActionStatus a = b->getStatus();
             string s;
             switch (a) {
@@ -155,15 +157,15 @@ void DeleteUser::act(Session &sess) {
             delete x->second;
             sess.getUserMap()->erase(sess.getInput2());
             complete();
-        } else error("User not found");
-    } else error("Incorrect command");
+        } else error("User not found.");
+    } else error("Incorrect command.");
 }
 
 DuplicateUser::DuplicateUser() : BaseAction (){}
 
 void DuplicateUser::act(Session &sess) {
     if (sess.getCounter() != 3 || !sess.containsUser(sess.getInput2()) || sess.containsUser(sess.getInput3())) {
-        error("Incorrect command");
+        error("Incorrect command.");
 
     } else {
         User *todup = sess.getUser(sess.getInput2())->duplactUser(sess.getInput3());
@@ -176,7 +178,7 @@ PrintWatchHistory::PrintWatchHistory() : BaseAction (){}
 
 void PrintWatchHistory::act(Session &sess) {
     if (sess.getCounter() != 1)
-        error("Incorrect input");
+        error("Incorrect input.");
     else {
         int historyID = 0;
         vector<Watchable *> history = sess.getActiveUser()->get_history();
@@ -194,7 +196,7 @@ PrintContentList::PrintContentList() : BaseAction (){}
 
 void PrintContentList::act(Session &sess) {
     if (sess.getCounter() != 1) {
-        error("Incorrect input");
+        error("Incorrect input.");
     } else {
         vector<Watchable *> *content = sess.getContent();
         for (Watchable *w : *content) {
@@ -221,7 +223,7 @@ void Exit::act(Session &sess) {
     if (sess.getCounter() == 1) {
         sess.setRun(false);
         complete();
-    } else error("invaild input");
+    } else error("Invalid input.");
 }
 
 std::string CreateUser::toString() const {
