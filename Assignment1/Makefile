@@ -4,10 +4,10 @@ CFLAGS  = -g -Wall -Weffc++ -std=c++11
 LFLAGS  = -L/usr/lib
 
 
-# Executable "SPLFLIX" depends on the files hello.o and run.o.
-SPLFLIX: bin/Session.o bin/User.o bin/Main.o bin/Action.o bin/Watchable.o
+# Executable "splflix" depends on the files hello.o and run.o.
+splflix: bin/Session.o bin/User.o bin/Main.o bin/Action.o bin/Watchable.o
 	@echo 'Building target: hello by Invoking C++ Linker'
-	$(CC) -o bin/SPLFLIX bin/Session.o bin/User.o bin/Main.o bin/Action.o bin/Watchable.o $(LFLAGS)
+	$(CC) -o bin/splflix bin/Session.o bin/User.o bin/Main.o bin/Action.o bin/Watchable.o $(LFLAGS)
 
 # Object code (*.o file) depends on the source and header files
 bin/Session.o: src/Session.cpp include/Session.h include/json.hpp include/Watchable.h include/User.h
