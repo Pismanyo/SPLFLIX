@@ -237,66 +237,57 @@ void Session::start() {
     watching= false;
     run=true;
     string answer1;
-    while (run)
-    {
-        getline(cin,answer1);
+    while (run) {
+        getline(cin, answer1);
         string word;
-        counter=0;
+        counter = 0;
         stringstream iss(answer1);
         while (iss >> word && counter < 4)
             inputs[counter++] = word;
+        if (counter != 0) {
+            if (inputs[0] == "content") {
+                PrintContentList *command = new PrintContentList();
+                command->act(*this);
+                actionsLog.push_back(command);
+            } else if (inputs[0] == "changeuser") {
+                ChangeActiveUser *command = new ChangeActiveUser();
+                command->act(*this);
+                actionsLog.push_back(command);
 
-        if (inputs[0]=="content") {
-            PrintContentList *command = new PrintContentList();
-            command->act(*this);
-            actionsLog.push_back(command);
-        }
-        else if (inputs[0]=="changeuser") {
-            ChangeActiveUser *command = new ChangeActiveUser();
-            command->act(*this);
-            actionsLog.push_back(command);
-
-        }
-        else if (inputs[0]=="deleteuser") {
-            DeleteUser *command = new DeleteUser();
-            command->act(*this);
-            actionsLog.push_back(command);
-        }
-        else if (inputs[0]=="watch") {
-            Watch *command=new Watch;
-            command->act(*this);
-            actionsLog.push_back(command);
-            while(watching)
-            {
-                command=new Watch;
-                command->act(*this);//
+            } else if (inputs[0] == "deleteuser") {
+                DeleteUser *command = new DeleteUser();
+                command->act(*this);
+                actionsLog.push_back(command);
+            } else if (inputs[0] == "watch") {
+                Watch *command = new Watch;
+                command->act(*this);
+                actionsLog.push_back(command);
+                while (watching) {
+                    command = new Watch;
+                    command->act(*this);//
+                    actionsLog.push_back(command);
+                }
+            } else if (inputs[0] == "createuser") {
+                CreateUser *command = new CreateUser();
+                command->act(*this);
+                actionsLog.push_back(command);
+            } else if (inputs[0] == "dupuser") {
+                DuplicateUser *command = new DuplicateUser();
+                command->act(*this);
+                actionsLog.push_back(command);
+            } else if (inputs[0] == "exit") {
+                Exit *command = new Exit();
+                command->act(*this);
+                actionsLog.push_back(command);
+            } else if (inputs[0] == "log") {
+                PrintActionsLog *command = new PrintActionsLog();
+                command->act(*this);
+                actionsLog.push_back(command);
+            } else if (inputs[0] == "watchhist") {
+                PrintWatchHistory *command = new PrintWatchHistory();
+                command->act(*this);
                 actionsLog.push_back(command);
             }
-        }
-        else if (inputs[0]=="createuser") {
-            CreateUser *command = new CreateUser();
-            command->act(*this);
-            actionsLog.push_back(command);
-        }
-        else if (inputs[0]=="dupuser") {
-            DuplicateUser *command = new DuplicateUser();
-            command->act(*this);
-            actionsLog.push_back(command);
-        }
-        else if (inputs[0]=="exit") {
-            Exit *command = new Exit();
-            command->act(*this);
-            actionsLog.push_back(command);
-        }
-        else if (inputs[0]=="log") {
-            PrintActionsLog *command = new PrintActionsLog();
-            command->act(*this);
-            actionsLog.push_back(command);
-        }
-        else if (inputs[0]=="watchhist") {
-            PrintWatchHistory *command = new PrintWatchHistory();
-            command->act(*this);
-            actionsLog.push_back(command);
         }
     }
 }
