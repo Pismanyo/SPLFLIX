@@ -99,14 +99,18 @@ Session& Session::operator=(const Session& other) {
         delete b;
         b = nullptr;
     }
+    actionsLog.clear();
     for (auto &it : userMap) {
         delete it.second;
         it.second = nullptr;
     }
+    userMap.clear();
     for (Watchable *w: content) {
         delete w;
         w = nullptr;
     }
+    content.clear();
+
     activeUser = nullptr;
     recommended = nullptr;
 
@@ -140,40 +144,43 @@ Session& Session::operator=(const Session& other) {
 Session& Session::operator=( Session&& other) {
     if (&other == this)
         return *this;
+
     for (BaseAction *b: actionsLog) {
         delete b;
         b = nullptr;
     }
-    for(auto & it : userMap) {
+    actionsLog.clear();
+    for (auto &it : userMap) {
         delete it.second;
         it.second = nullptr;
     }
-    for(Watchable* w: content) {
+    userMap.clear();
+    for (Watchable *w: content) {
         delete w;
         w = nullptr;
     }
-    for (Watchable *w:other.content)
-    {
-        Watchable *cur=w;
+    content.clear();
+    for (Watchable *w:other.content) {
+        Watchable *cur = w;
         content.push_back(cur);
-        w= nullptr;
+        w = nullptr;
     }
 
     for (BaseAction *b : other.actionsLog) {
-        BaseAction *cur=b;
+        BaseAction *cur = b;
         actionsLog.push_back(cur);
-        b= nullptr;
+        b = nullptr;
     }
 
     activeUser = other.activeUser;
     for (auto &it : other.userMap) {
-        auto w=it.second;
+        auto w = it.second;
         userMap.insert({it.first, w});
-        it.second= nullptr;
+        it.second = nullptr;
     }
     recommended = other.recommended;
-    other.activeUser= nullptr;
-    other.recommended=nullptr;
+    other.activeUser = nullptr;
+    other.recommended = nullptr;
     other.actionsLog.clear();
     other.userMap.clear();
     other.content.clear();
@@ -181,6 +188,22 @@ Session& Session::operator=( Session&& other) {
 }
 
 Session::Session(Session &&other) {
+    for (BaseAction *b: actionsLog) {
+        delete b;
+        b = nullptr;
+    }
+    actionsLog.clear();
+    for (auto &it : userMap) {
+        delete it.second;
+        it.second = nullptr;
+    }
+    userMap.clear();
+    for (Watchable *w: content) {
+        delete w;
+        w = nullptr;
+    }
+    content.clear();
+
     for (Watchable *w:other.content)
     {
         Watchable *cur=w;
@@ -202,6 +225,7 @@ Session::Session(Session &&other) {
     recommended = other.recommended;
     other.activeUser= nullptr;
     other.recommended=nullptr;
+
     other.actionsLog.clear();
     other.userMap.clear();
     other.content.clear();

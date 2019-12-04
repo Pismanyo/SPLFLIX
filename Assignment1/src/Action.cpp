@@ -48,8 +48,14 @@ void CreateUser::act(Session &sess) {
             GenreRecommenderUser *cur = new GenreRecommenderUser(input2);
             sess.getUserMap()->insert({input2, cur});
             complete();
-        } else error("Invalid algorithm type selected.");
-    } else error("Username already exists.");
+        } else {
+            error("Invalid algorithm type selected.");
+            cout << "“Error -Invalid algorithm type selected." << endl;
+        }
+    } else {
+        error("Username already exists or invalid input.");
+        cout << "“Error - Username already exists or invalid input." << endl;
+    }
 }
 
 ChangeActiveUser::ChangeActiveUser() : BaseAction (){}
@@ -58,13 +64,17 @@ void ChangeActiveUser::act(Session &sess) {
     if (sess.getCounter() == 2) {
         unordered_map<string, User *> *userList = sess.getUserMap();
         unordered_map<string, User *>::const_iterator got = userList->find(sess.getInput2());
-        if (sess.getCounter() != 2 || got == userList->end())
+        if (sess.getCounter() != 2 || got == userList->end()) {
             error("User not found.");
-        else {
+            cout << "Error - User not found." << endl;
+        } else {
             sess.setActiveUser(got->second);
             complete();
         }
-    } else error("Incorrect command");
+    } else {
+        error("Invalid input.");
+        cout << "Error - Invalid input." << endl;
+    }
 }
 
 Watch::Watch() : BaseAction (){}
@@ -85,6 +95,7 @@ void Watch::act(Session &sess) {
         }
         if (!sess.getWatching()) {
             error("Invalid input.");
+            cout << "Error - Invalid input." << endl;
         }
     } else {
         watch = sess.getRecommended();
@@ -99,6 +110,7 @@ void Watch::act(Session &sess) {
         } else if (sess.getRecommended() != nullptr) {
             sess.setWatching(false);
             error("Invalid input.");
+            cout << "Error - Invalid input." << endl;
         } else {
             sess.setWatching(false);
             complete();
@@ -120,8 +132,10 @@ void Watch::act(Session &sess) {
 PrintActionsLog::PrintActionsLog() : BaseAction (){}
 
 void PrintActionsLog::act(Session &sess) {
-    if (sess.getCounter() != 1)
-        error("Incorrect input.");
+    if (sess.getCounter() != 1) {
+        error("Invalid input.");
+        cout << "Error - Invalid input." << endl;
+    }
     else {
         std::vector<BaseAction *> *actionsLog = sess.getActionsLog();
         int actionLogEnd= actionsLog->size()-1;
@@ -149,24 +163,31 @@ void PrintActionsLog::act(Session &sess) {
 DeleteUser::DeleteUser(): BaseAction (){}
 
 void DeleteUser::act(Session &sess) {
-    if (sess.getCounter() == 2 && sess.getInput2() != "default") {
-        if (sess.getActiveUser()->getName() == sess.getInput2())
-            sess.setActiveUser((sess.getUserMap()->find("default"))->second);
-        if (sess.containsUser(sess.getInput2())) {
+    if (sess.getCounter() == 2) {
+        if (sess.getActiveUser()->getName() == sess.getInput2()) {
+            error("Cannot delete active user.");
+            cout << "Error - Cannot delete active user." << endl;
+        } else if (sess.containsUser(sess.getInput2())) {
             auto x = sess.getUserMap()->find(sess.getInput2());
             delete x->second;
             sess.getUserMap()->erase(sess.getInput2());
             complete();
-        } else error("User not found.");
-    } else error("Incorrect command.");
+        } else {
+            error("User not found.");
+            cout << "Error - User not found." << endl;
+        }
+    } else {
+        error("Invalid input.");
+        cout << "Error - Invalid input." << endl;
+    }
 }
 
 DuplicateUser::DuplicateUser() : BaseAction (){}
 
 void DuplicateUser::act(Session &sess) {
     if (sess.getCounter() != 3 || !sess.containsUser(sess.getInput2()) || sess.containsUser(sess.getInput3())) {
-        error("Incorrect command.");
-
+        error("Invalid input.");
+        cout << "Error - Invalid input." << endl;
     } else {
         User *todup = sess.getUser(sess.getInput2())->duplactUser(sess.getInput3());
         sess.getUserMap()->insert({todup->getName(), todup});
@@ -177,8 +198,10 @@ void DuplicateUser::act(Session &sess) {
 PrintWatchHistory::PrintWatchHistory() : BaseAction (){}
 
 void PrintWatchHistory::act(Session &sess) {
-    if (sess.getCounter() != 1)
-        error("Incorrect input.");
+    if (sess.getCounter() != 1) {
+        error("Invalid input.");
+        cout << "Error - Invalid input." << endl;
+    }
     else {
         int historyID = 0;
         vector<Watchable *> history = sess.getActiveUser()->get_history();
@@ -196,7 +219,8 @@ PrintContentList::PrintContentList() : BaseAction (){}
 
 void PrintContentList::act(Session &sess) {
     if (sess.getCounter() != 1) {
-        error("Incorrect input.");
+        error("Invalid input.");
+        cout << "Error - Invalid input." << endl;
     } else {
         vector<Watchable *> *content = sess.getContent();
         for (Watchable *w : *content) {
@@ -223,7 +247,10 @@ void Exit::act(Session &sess) {
     if (sess.getCounter() == 1) {
         sess.setRun(false);
         complete();
-    } else error("Invalid input.");
+    } else{
+        error("Invalid input.");
+        cout << "Error - Invalid input." << endl;
+    }
 }
 
 std::string CreateUser::toString() const {
